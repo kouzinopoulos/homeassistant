@@ -58,30 +58,31 @@ media_player:
     #   - zone: Zone2 / Zone3
     #     name: NAME
   - platform: webostv
-    # host: 192.168.0.10
+    host: 192.168.1.231
     name: TV
-    filename: webostv.conf
-    timeout: 5
-    turn_on_action:
-      service: persistent_notification.create
-      data:
-        message: "Turn on action"
-    customize:
-      sources:
-        - livetv
-        - youtube
-        - makotv
-        - netflix
+    #filename: webostv.conf
+    #timeout: 5
+    #turn_on_action:
+    #  service: persistent_notification.create
+    #  data:
+    #    message: "Turn on action"
+    #customize:
+    #  sources:
+    #    - livetv
+    #    - youtube
+    #    - makotv
+    #    - netflix
 
 notify:
-  - platform: discord
+  - name: discord
+    platform: discord
     token: !secret discord_token
   - name: scott
     platform: group
     services:
-    - service: discord
-      data:
-        target: !secret discord_channel_id
+      - service: discord
+        data:
+          target: !secret discord_channel_id
 
 # Sensors
 sensor:
@@ -113,11 +114,11 @@ light:
 - platform: yeelight
   devices:
     192.168.1.161:
-      name: Hallway lamp
-    192.168.1.123:
       name: Living room lamp
+    192.168.1.123:
+      name: Diner lamp
     192.168.1.121:
-      name: Dinner lamp
+      name: Kitchen lamp
 
 device_tracker:
   - platform: tado

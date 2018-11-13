@@ -37,3 +37,18 @@
   - service: notify.scott
     data_template:
       message: "System is shutting down"
+
+- alias: Alert when motion detected while away
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001b179d9
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: sensor.heating_tado_mode
+    state: HOME
+  action:
+  - service: notify.scott
+    data_template:
+      message: "MOTION DETECTED!!"

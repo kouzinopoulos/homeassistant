@@ -1,13 +1,13 @@
-default_view:
-  view: yes
-  icon: mdi:home-assistant
-  entities:
-    - group.family
-    - group.lights
-    - group.motion
-    - group.all_temperature_sensors
-    - group.weather
-    - group.automaticlights
+#default_view:
+#  view: yes
+#  icon: mdi:home-assistant
+#  entities:
+#    - group.family
+#    - group.lights
+#    - group.motion
+#    - group.all_temperature_sensors
+#    - group.weather
+#    - group.automaticlights
 
 rooms:
   view: yes
@@ -17,6 +17,7 @@ rooms:
     - group.thomas
     - group.diningroom
     - group.hall
+    - group.livingroom
 
 hall:
   entities:
@@ -24,3 +25,10 @@ hall:
     - binary_sensor.hall
     - sensor.hall_brightness
     - sensor.hall_temperature
+
+livingroom:
+  view: no
+  entities:
+    - light.living_room_lamp
+    - binary_sensor.motion_sensor_158d0001b179d9
+
