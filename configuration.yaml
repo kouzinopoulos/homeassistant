@@ -1,0 +1,125 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 0
+  unit_system: metric
+  time_zone: Europe/Athens
+  customize: !include customize.yaml
+  # whitelist_external_dirs: !secret whitelist_dirs
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+media_player:
+  - platform: denonavr
+    # host: IP_ADDRESS
+    # name: NAME
+    # show_all_sources: True / False
+    # timeout: POSITIVE INTEGER
+    # zones:
+    #   - zone: Zone2 / Zone3
+    #     name: NAME
+  - platform: webostv
+    # host: 192.168.0.10
+    name: TV
+    filename: webostv.conf
+    timeout: 5
+    turn_on_action:
+      service: persistent_notification.create
+      data:
+        message: "Turn on action"
+    customize:
+      sources:
+        - livetv
+        - youtube
+        - makotv
+        - netflix
+
+# Sensors
+sensor:
+  # Weather prediction
+  # - platform: yr
+  - platform: darksky
+    api_key: !secret darksky_key
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      - apparent_temperature
+      - hourly_summary
+      - daily_summary
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+  - key: !secret xiaomi_gw_key
+
+light:
+- platform: yeelight
+  devices:
+    192.168.1.161:
+      name: Hallway lamp
+    192.168.1.123:
+      name: Living room lamp
+    192.168.1.121:
+      name: Dinner lamp
+
+device_tracker:
+  - platform: tado
+    username: !secret tado_username
+    password: !secret tado_password
+    home_id: !secret tado_home_id
+
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
+
+group: !include groups.yaml
+automation: !include automations.yaml
+#automation: !include_dir_merge_list automations
+script: !include scripts.yaml
