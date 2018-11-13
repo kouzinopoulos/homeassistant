@@ -17,21 +17,23 @@
   - service: automation.turn_on
     data:
       entity_id: automation.MOTION_OFF
+
 - alias: Notify on startup
   trigger:
   - event: start
     platform: homeassistant
   condition: []
   action:
-  - data:
-      message: ':hass: System is up and running.'
-    service: notify.slack
+  - service: notify.scott
+    data_template:
+      message: "System is up and running"
+
 - alias: Notify on shutdown
   trigger:
   - event: shutdown
     platform: homeassistant
   condition: []
   action:
-  - data:
-      message: ':hass: System is shutting down'
-    service: notify.slack
+  - service: notify.scott
+    data_template:
+      message: "System is shutting down"

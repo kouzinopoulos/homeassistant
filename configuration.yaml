@@ -73,6 +73,16 @@ media_player:
         - makotv
         - netflix
 
+notify:
+  - platform: discord
+    token: !secret discord_token
+  - name: scott
+    platform: group
+    services:
+    - service: discord
+      data:
+        target: !secret discord_channel_id
+
 # Sensors
 sensor:
   # Weather prediction

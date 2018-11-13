@@ -1,8 +1,0 @@
-
-oneplus:
-  hide_if_away: false
-  icon:
-  mac: '659624'
-  name: Oneplus
-  picture:
-  track: true
