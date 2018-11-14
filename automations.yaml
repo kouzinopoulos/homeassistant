@@ -1,15 +1,15 @@
 # Security alarm automations
 # 1. When alarm is armed and motion is detected, start alarm on the gateway
-- alias: Test1
+- alias: Siren when motion detected
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001b179d9
-    from: off
-    to: on
+    from: 'off'
+    to: 'on'
   condition:
     condition: state
     entity_id: input_boolean.arm_alarm
-    state: on
+    state: 'on'
   action:
   - service: light.turn_on
     entity_id: light.gateway_light_286c07f1c2cd
@@ -34,7 +34,7 @@
   condition:
     condition: state
     entity_id: sensor.heating_tado_mode
-    state: HOME
+    state: AWAY
   action:
   - service: notify.scott
     data_template:
