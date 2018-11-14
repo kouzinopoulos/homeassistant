@@ -108,6 +108,27 @@ input_boolean:
     initial: off
     icon: mdi:security
 
+binary_sensor:
+  - platform: bayesian
+  name: In Bed
+  # base probability of sleeping: 8/24 = 33%
+  prior: 0.33
+  # Once the sensor hits a probability threshold of 95%, fire the rule
+  probability_threshold: 0.95
+  observations:
+    - entity_id: group.all_lights
+      prob_given_true: 0.7
+      platform: state
+      to_state: off
+    # - entity_id: remote.watch_roku
+    #   prob_given_true: 0.75
+    #   platform: state
+    #   to_state: off
+    - entity_id: sun.sun
+      prob_given_true: 0.7
+      platform: state
+      to_state: below_horizon
+
 # Text to speech
 tts:
   - platform: google
