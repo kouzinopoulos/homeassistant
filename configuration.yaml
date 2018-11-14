@@ -87,7 +87,6 @@ notify:
 # Sensors
 sensor:
   # Weather prediction
-  # - platform: yr
   - platform: darksky
     api_key: !secret darksky_key
     monitored_conditions:
@@ -95,8 +94,19 @@ sensor:
       - icon
       - temperature
       - apparent_temperature
-      - hourly_summary
+      - precip_probability
+      - humidity
       - daily_summary
+      - temperature_low
+      - temperature_high
+    update_interval:
+      - minutes: 5
+
+input_boolean:
+  arm_alarm:
+    name: Arm alarm
+    initial: off
+    icon: mdi:security
 
 # Text to speech
 tts:
@@ -108,7 +118,8 @@ cloud:
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
-  - key: !secret xiaomi_gw_key
+  - mac: !secret xiaomi_gw_mac
+    key: !secret xiaomi_gw_key
 
 light:
 - platform: yeelight

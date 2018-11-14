@@ -13,7 +13,7 @@
   - service: xiaomi_aqara.play_ringtone
     data:
       ringtone_id: 8
-      ringtone_vol: 100
+      ringtone_vol: 10
   - service: automation.turn_on
     data:
       entity_id: automation.MOTION_OFF
