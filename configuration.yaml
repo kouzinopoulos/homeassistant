@@ -77,14 +77,13 @@ notify:
   - name: discord
     platform: discord
     token: !secret discord_token
-  - name: scott
+  - name: charis
     platform: group
     services:
       - service: discord
         data:
           target: !secret discord_channel_id
 
-# Sensors
 sensor:
   # Weather prediction
   - platform: darksky
@@ -102,32 +101,36 @@ sensor:
     update_interval:
       minutes: 5
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+
 input_boolean:
   arm_alarm:
     name: Arm alarm
     initial: off
     icon: mdi:security
 
-binary_sensor:
-  - platform: bayesian
-    name: In Bed
-    # base probability of sleeping: 8/24 = 33%
-    prior: 0.33
-    # Once the sensor hits a probability threshold of 95%, fire the rule
-    probability_threshold: 0.95
-    observations:
-      - entity_id: group.all_lights
-        prob_given_true: 0.7
-        platform: state
-        to_state: off
-      # - entity_id: remote.watch_roku
-      #   prob_given_true: 0.75
-      #   platform: state
-      #   to_state: off
-      - entity_id: sun.sun
-        prob_given_true: 0.7
-        platform: state
-        to_state: below_horizon
+# binary_sensor:
+#   - platform: bayesian
+#     name: In Bed
+#     # base probability of sleeping: 8/24 = 33%
+#     prior: 0.33
+#     # Once the sensor hits a probability threshold of 95%, fire the rule
+#     probability_threshold: 0.95
+#     observations:
+#       - entity_id: group.all_lights
+#         prob_given_true: 0.7
+#         platform: state
+#         to_state: 'off'
+#       # - entity_id: remote.watch_roku
+#       #   prob_given_true: 0.75
+#       #   platform: state
+#       #   to_state: off
+#       - entity_id: sun.sun
+#         prob_given_true: 0.7
+#         platform: state
+#         to_state: below_horizon
 
 # Text to speech
 tts:

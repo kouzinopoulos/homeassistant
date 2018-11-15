@@ -11,18 +11,53 @@
     entity_id: input_boolean.arm_alarm
     state: 'on'
   action:
-  - service: light.turn_on
-    entity_id: light.gateway_light_286c07f1c2cd
-    data:
-      brightness: 255
-      color_name: red
-  - service: xiaomi_aqara.play_ringtone
-    data:
-      ringtone_id: 8
-      ringtone_vol: 10
-  - service: automation.turn_on
-    data:
-      entity_id: automation.MOTION_OFF
+    - service: light.turn_on
+      entity_id: light.gateway_light_286c07f1c2cd
+      data:
+        brightness: 255
+        color_name: red
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_gw_mac
+        ringtone_id: 8
+        ringtone_vol: 10
+    - service: automation.turn_on
+      data:
+        entity_id: automation.MOTION_OFF
+
+# 1b. When arming the alarm, play a sound from the gateway and send a notification
+- alias: Alarm arming visual/textual notification
+  trigger:
+    platform: state
+    entity_id: input_boolean.arm_alarm
+    from: 'off'
+    to: 'on'
+  action:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_gw_mac
+        ringtone_id: 8
+        ringtone_vol: 10
+    - service: notify.charis
+      data_template:
+        message: "Alarm armed"
+
+# 1c. When disarming the alarm, play a sound from the gateway and send a notification
+- alias: Alarm disarming visual/textual notification
+  trigger:
+    platform: state
+    entity_id: input_boolean.arm_alarm
+    from: 'on'
+    to: 'off'
+  action:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_gw_mac
+        ringtone_id: 4
+        ringtone_vol: 10
+    - service: notify.charis
+      data_template:
+        message: "Alarm disarmed"
 
 # 2. When oneplus is away and motion is detected, fire an alarm
 - alias: Alert when motion detected while away
@@ -34,11 +69,11 @@
   condition:
     condition: state
     entity_id: sensor.heating_tado_mode
-    state: AWAY
+    state: 'AWAY'
   action:
-  - service: notify.scott
-    data_template:
-      message: "MOTION DETECTED!!"
+    - service: notify.charis
+      data_template:
+        message: "MOTION DETECTED!!"
 
 # Entertainment automations
 # 1. Movie mode, when tv indicates you're watching a movie or TV show, lights go off
@@ -48,22 +83,29 @@
 # Home assistant startup and shutdown notifications
 - alias: Notify on startup
   trigger:
-  - event: start
-    platform: homeassistant
+    - event: start
+      platform: homeassistant
   condition: []
   action:
-  - service: notify.scott
-    data_template:
-      message: "System is up and running"
+    - service: notify.charis
+      data_template:
+        message: "System is up and running"
 
 - alias: Notify on shutdown
   trigger:
-  - event: shutdown
-    platform: homeassistant
+    - event: shutdown
+      platform: homeassistant
   condition: []
   action:
-  - service: notify.scott
-    data_template:
-      message: "System is shutting down"
+    - service: notify.charis
+      data_template:
+        message: "System is shutting down"
 
+# When no one is at home, turn off all lights
+- alias: Turn off lights when no one is at home
+  trigger:
+    platform: state
+    entity_id: device_tracker.oneplus
+    state: 'not-home'
+  service: light.turn_off
 
