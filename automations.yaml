@@ -19,7 +19,7 @@
     - service: xiaomi_aqara.play_ringtone
       data:
         gw_mac: !secret xiaomi_gw_mac
-        ringtone_id: 8
+        ringtone_id: 1
         ringtone_vol: 10
     - service: automation.turn_on
       data:
@@ -106,6 +106,7 @@
   trigger:
     platform: state
     entity_id: device_tracker.oneplus
-    state: 'not-home'
-  service: light.turn_off
+    to: 'not-home'
+  action:
+    - service: light.turn_off
 
