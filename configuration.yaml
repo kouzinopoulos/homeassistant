@@ -38,6 +38,35 @@ conversation:
 
 # Enables support for tracking state changes over time
 history:
+  use_include_order: True
+  include:
+    domains:
+      - binary_sensor
+      - sensor
+      - switch
+      - media_player
+      - device_tracker
+      - light
+      - climate
+      - input_boolean
+
+history_graph:
+  graph1:
+    name: Lights Graph
+    entities:
+      - light.all_lights
+    hours_to_show: 24
+    refresh: 60
+  graph1:
+    name: Heating Graph
+    entities:
+      - climate.heating.current_temperature
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_daytime_high_temperature
+      - sensor.dark_sky_overnight_low_temperature
+    hours_to_show: 24
+    refresh: 60
 
 # View all events in a logbook
 logbook:

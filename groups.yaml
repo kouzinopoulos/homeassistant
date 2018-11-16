@@ -9,6 +9,11 @@
 #    - group.weather
 #    - group.automaticlights
 
+configuration:
+  name: 'Configuration'
+  entities:
+    - input_boolean.arm_alarm
+
 rooms:
   view: yes
   entities:
