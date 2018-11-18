@@ -60,7 +60,7 @@ history_graph:
   graph1:
     name: Heating Graph
     entities:
-      - heating.current_temperature
+      - sensor.heating_temperature
       - sensor.dark_sky_temperature
       - sensor.dark_sky_daytime_high_temperature
       - sensor.dark_sky_overnight_low_temperature
@@ -128,6 +128,13 @@ sensor:
       - temperature_high
     update_interval:
       minutes: 5
+
+sensor:
+  - platform: template
+    sensors:
+      tv_source:
+        value_template: '{{ states.media_player.tv.attributes["source"] }}'
+        friendly_name: 'TV Source'
 
 weather:
   - platform: darksky

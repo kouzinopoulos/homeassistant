@@ -110,3 +110,10 @@
   action:
     - service: light.turn_off
 
+- alias: Turn off lights when watching Netflix
+  trigger:
+    platform: state
+    entity_id: sensor.tv_source
+    to: 'Netflix'
+  action:
+    - service: light.turn_off
