@@ -60,8 +60,7 @@ history_graph:
   graph1:
     name: Heating Graph
     entities:
-      - climate.heating.current_temperature
-      - sensor.dark_sky_apparent_temperature
+      - heating.current_temperature
       - sensor.dark_sky_temperature
       - sensor.dark_sky_daytime_high_temperature
       - sensor.dark_sky_overnight_low_temperature
@@ -79,7 +78,7 @@ sun:
 
 media_player:
   - platform: denonavr
-    host: 192.168.1.151
+    host: 192.168.1.201
     name: Denon
     # show_all_sources: True / False
     # timeout: POSITIVE INTEGER
@@ -87,7 +86,7 @@ media_player:
     #   - zone: Zone2 / Zone3
     #     name: NAME
   - platform: webostv
-    host: 192.168.1.231
+    host: 192.168.1.200
     name: TV
     #filename: webostv.conf
     #timeout: 5
@@ -177,12 +176,14 @@ xiaomi_aqara:
 light:
 - platform: yeelight
   devices:
-    192.168.1.161:
-      name: Living room lamp
-    192.168.1.123:
+    192.168.1.110:
       name: Diner lamp
-    192.168.1.121:
+    192.168.1.111:
+      name: Living room lamp
+    192.168.1.112:
       name: Kitchen lamp
+    192.168.1.113:
+      name: Study lamp
 
 device_tracker:
   - platform: tado
