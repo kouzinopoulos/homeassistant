@@ -31,12 +31,12 @@ hall:
     - sensor.hall_brightness
     - sensor.hall_temperature
 
-livingroom:
-  name: 'Living Room'
-  view: no
-  entities:
-    - light.living_room_lamp
-    - binary_sensor.motion_sensor_158d0001b179d9
+#livingroom:
+#  name: 'Living Room'
+#  view: no
+#  entities:
+#    - light.living_room_lamp
+#    - binary_sensor.motion_sensor_158d0001b179d9
 
 weather:
   name: 'Weather'
@@ -51,3 +51,14 @@ weather:
     - sensor.dark_sky_temperature_high
     - sensor.dark_sky_humidity
     - sensor.dark_sky_precip_probability
+
+status:
+  name: 'Status'
+  control: hidden
+  entities:
+    - sensor.home_this_week
+    - sensor.away_this_week
+    - sensor.heating_on_this_week
+    - sensor.heating_off_this_week
+    - sensor.tv_on_this_week
+
