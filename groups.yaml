@@ -1,13 +1,14 @@
-#default_view:
-#  view: yes
-#  icon: mdi:home-assistant
-#  entities:
-#    - group.family
-#    - group.lights
-#    - group.motion
-#    - group.all_temperature_sensors
-#    - group.weather
-#    - group.automaticlights
+default_view:
+  view: yes
+  icon: mdi:home-assistant
+  entities:
+    - group.Status
+    - group.Configuration
+    - group.all_automations
+    - group.all_lights
+    - group.mediaplayer
+    - group.all_switches
+    - group.all_devices
 
 configuration:
   name: 'Configuration'
@@ -37,6 +38,12 @@ hall:
 #    - light.living_room_lamp
 #    - binary_sensor.motion_sensor_158d0001b179d9
 
+mediaplayer:
+  name: 'Media Player'
+  entities:
+    - media_player.tv
+    - media_player.denon
+
 Climate:
   icon: mdi:thermometer
   view: yes
@@ -54,8 +61,7 @@ Climate:
     # - sensor.dark_sky_humidity
     # - sensor.dark_sky_precip_probability
 
-status:
-  name: 'Status'
+Status:
   control: hidden
   entities:
     - sensor.home_this_week
