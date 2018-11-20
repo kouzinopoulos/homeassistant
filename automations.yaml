@@ -1,6 +1,7 @@
 # Security alarm automations
 # 1. When alarm is armed and motion is detected, start alarm on the gateway
 - alias: Siren when motion detected
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001b179d9
@@ -100,12 +101,14 @@
 - alias: Turn off lights when no one is at home
   trigger:
     platform: state
-    entity_id: device_tracker.oneplus
-    to: 'not-home'
+    entity_id: sensor.heating_tado_mode
+    from: 'HOME'
+    to: 'AWAY'
   action:
     - service: light.turn_off
 
 - alias: Turn off lights when watching Netflix
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: sensor.tv_source

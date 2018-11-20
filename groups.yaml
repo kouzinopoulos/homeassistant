@@ -11,6 +11,7 @@ default_view:
     - group.mediaplayer
     - group.all_switches
     - group.all_devices
+    - climate.heating
 
 Configuration:
   entities:
