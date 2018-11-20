@@ -106,62 +106,6 @@ notify:
         data:
           target: !secret discord_channel_id
 
-sensor:
-  - platform: darksky
-    api_key: !secret darksky_key
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
-      - apparent_temperature
-      - precip_probability
-      - humidity
-      - daily_summary
-      - temperature_low
-      - temperature_high
-    update_interval:
-      minutes: 5
-  - platform: template
-    sensors:
-      tv_source:
-        value_template: '{{ states.media_player.tv.attributes["source"] }}'
-        friendly_name: 'TV Source'
-  - platform: history_stats
-    name: Home this week
-    entity_id: sensor.heating_tado_mode
-    state: 'HOME'
-    type: ratio
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
-  - platform: history_stats
-    name: Away this week
-    entity_id: sensor.heating_tado_mode
-    state: 'AWAY'
-    type: ratio
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
-  - platform: history_stats
-    name: Heating ON this week
-    entity_id: sensor.heating_power
-    state: 'ON'
-    type: ratio
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
-  - platform: history_stats
-    name: Heating OFF this week
-    entity_id: sensor.heating_power
-    state: 'OFF'
-    type: ratio
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
-  - platform: history_stats
-    name: TV on this week
-    entity_id: media_player.tv
-    state: 'playing'
-    type: ratio
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
-
 weather:
   - platform: darksky
     api_key: !secret darksky_key
@@ -228,7 +172,8 @@ tado:
   username: !secret tado_username
   password: !secret tado_password
 
-group: !include groups.yaml
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations
+group: !include groups.yaml
+sensor: !include sensors.yaml
 script: !include scripts.yaml

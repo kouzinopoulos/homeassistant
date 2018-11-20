@@ -13,11 +13,11 @@ excluded_entities:
   - weblink.router
 views:
     # View tab title.
-  - title: Example
+  - title: Monitor
     # Unique id for direct access /lovelace/${id}. If you don't specify one, it is added automatically.
-    id: example
+    id: monitor
     # Optional background (overwrites the global background).
-    background: radial-gradient(crimson, skyblue)
+    #background: radial-gradient(crimson, skyblue)
     # Each view can have a different theme applied. Theme should be defined in the frontend.
     theme: dark-mode
     # The cards to show on this view.
@@ -31,7 +31,6 @@ views:
         card:
           type: glance
           title: People at home
-
       - id: applianceson
         type: entity-filter
         entities:
@@ -44,11 +43,11 @@ views:
           - sensor.heating_power
         state_filter:
           - 'on'
-          - 'ON'  
+          - 'ON'
         card:
           type: glance
           title: Activated appliances
-      
+
        # The picture entity card will represent an entity with a picture
       - type: picture-entity
         image: https://www.home-assistant.io/images/default-social.png
@@ -57,7 +56,7 @@ views:
     # Specify a tab icon if you want the view tab to be an icon.
   - icon: mdi:home-assistant
     # Title of the view. Will be used as the tooltip for tab icon
-    title: Second view
+    title: Home
     cards:
         # Entities card will take a list of entities and show their state.
       - type: entities
