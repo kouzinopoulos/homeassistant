@@ -79,24 +79,13 @@ Weather:
 
 Today:
   entities:
-    - group.todaybadges
-    - sensor.friendly_date
-    - sensor.dark_sky_hourly_summary
-
-# Put a copy in default_view for commute
-TodayDefault:
-  name: Today
-  entities:
-  - group.todaybadges
-  - sensor.dark_sky_hourly_summary
-
-todaybadges:
-  entities:
     - sun.sun
     - sensor.solar_angle
     - sensor.sunrise_time
     - sensor.sunset_time
     - sensor.moon
+    - sensor.friendly_date
+    - sensor.dark_sky_hourly_summary
 
 weatherbadges:
   entities:

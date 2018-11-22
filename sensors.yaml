@@ -19,8 +19,10 @@
     - precip_probability
     - humidity
     - daily_summary
+    - hourly_summary
     - temperature_low
     - temperature_high
+    - wind_bearing
   update_interval:
     minutes: 5
 - platform: template
