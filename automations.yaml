@@ -75,11 +75,6 @@
       data_template:
         message: "MOTION DETECTED!!"
 
-# Entertainment automations
-# 1. Movie mode, when tv indicates you're watching a movie or TV show, lights go off
-
-
-
 # Home assistant startup and shutdown notifications
 - alias: Notify on startup
   trigger:
@@ -117,3 +112,34 @@
     to: 'Netflix'
   action:
     - service: light.turn_off
+
+- alias: Turn off living room/kitchen lights when no motion detected for 10 mins
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001b179d9
+    to: 'off'
+    for:
+      minutes: 10
+    action:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.living_room_lamp
+            - light.kitchen_lamp
+            - light.diner_lamp
+
+- alias: Turn on living room lamp if presence changed to home and sun is down
+  trigger:
+    platform: state
+      entity_id: sensor.heating_tado_mode
+      from: 'AWAY'
+      to: 'HOME'
+  condition:
+    - condition: sun
+      after: 'sunset'
+      offset: '-01:00:00'
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - light.living_room_lamp
