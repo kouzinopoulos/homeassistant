@@ -4,39 +4,21 @@ default_view:
   entities:
     - group.Status
     - group.Configuration
+    - group.Motion
+    - history_graph.heating_graph
     - group.all_automations
     - group.all_lights
     - group.mediaplayer
     - group.all_switches
     - group.all_devices
 
-configuration:
-  name: 'Configuration'
+Configuration:
   entities:
     - input_boolean.arm_alarm
 
-# rooms:
-#   view: yes
-#   entities:
-#     - group.bedroom
-#     - group.office
-#     - group.diningroom
-#     - group.hall
-#     - group.livingroom
-
-hall:
+Motion:
   entities:
-    - light.hall
-    - binary_sensor.hall
-    - sensor.hall_brightness
-    - sensor.hall_temperature
-
-#livingroom:
-#  name: 'Living Room'
-#  view: no
-#  entities:
-#    - light.living_room_lamp
-#    - binary_sensor.motion_sensor_158d0001b179d9
+    - binary_sensor.motion_sensor_158d0001b179d9
 
 mediaplayer:
   name: 'Media Player'
@@ -51,15 +33,6 @@ Climate:
     - group.Weather
     - group.Today
     - group.Indoors
-    # - sensor.dark_sky_summary
-    # - sensor.dark_sky_daily_summary
-    # - sensor.dark_sky_icon
-    # - sensor.dark_sky_temperature
-    # - sensor.dark_sky_apparent_temperature
-    # - sensor.dark_sky_temperature_low
-    # - sensor.dark_sky_temperature_high
-    # - sensor.dark_sky_humidity
-    # - sensor.dark_sky_precip_probability
 
 Status:
   control: hidden
