@@ -123,24 +123,24 @@
     to: 'off'
     for:
       minutes: 10
-    action:
-      - service: homeassistant.turn_off
-        data:
-          entity_id:
-            - light.living_room_lamp
-            - light.kitchen_lamp
-            - light.diner_lamp
+  action:
+    - service: homeassistant.turn_off
+      data:
+        entity_id:
+          - light.living_room_lamp
+          - light.kitchen_lamp
+          - light.diner_lamp
 
 - alias: Turn on living room lamp if presence changed to home and sun is down
   trigger:
     platform: state
-      entity_id: sensor.heating_tado_mode
-      from: 'AWAY'
-      to: 'HOME'
+    entity_id: sensor.heating_tado_mode
+    from: 'AWAY'
+    to: 'HOME'
   condition:
-    - condition: sun
-      after: 'sunset'
-      offset: '-01:00:00'
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
   action:
     - service: homeassistant.turn_on
       data:
