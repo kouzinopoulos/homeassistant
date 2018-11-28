@@ -116,13 +116,13 @@
   action:
     - service: light.turn_off
 
-- alias: Turn off living room/kitchen lights when no motion detected for 10 mins
+- alias: Turn off living room/kitchen lights when no motion detected for 15 mins
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001b179d9
     to: 'off'
     for:
-      minutes: 10
+      minutes: 15
   action:
     - service: homeassistant.turn_off
       data:

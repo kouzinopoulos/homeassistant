@@ -12,8 +12,52 @@ background: center / cover no-repeat url("/background.png") fixed
 excluded_entities:
   - weblink.router
 views:
+  - icon: mdi:home-assistant
+    title: Home
+    cards:
+      - type: entities
+        title: Lights
+        entities:
+          - group.all_lights
+          - entity: light.kitchen_lamp
+            # Override the name to use
+            name: Kitchen light
+
+        # The markdown card will render markdown text.
+      - type: markdown
+        title: Lovelace
+        content: >
+          Welcome **master**!
+      - type: entities
+        title: Configuration
+        entities:
+          - group.Configuration
+      - type: entities
+        title: Automation
+        entities:
+          - group.all_automations
+      - type: entities
+        title: Media player
+        entities:
+          - group.mediaplayer
+      - type: entities
+        title: Heating panel
+        entities:
+          - climate.heating
+
+
+
+
+
+
+        # The markdown card will render markdown text.
+      - type: markdown
+        title: Lovelace
+        content: >
+          Welcome **master**!
     # View tab title.
-  - title: Monitor
+  - icon: mdi:monitor
+    title: Monitor
     # Unique id for direct access /lovelace/${id}. If you don't specify one, it is added automatically.
     id: monitor
     # Optional background (overwrites the global background).
@@ -52,27 +96,3 @@ views:
       - type: picture-entity
         image: https://www.home-assistant.io/images/default-social.png
         entity: light.kitchen_lamp
-
-    # Specify a tab icon if you want the view tab to be an icon.
-  - icon: mdi:home-assistant
-    # Title of the view. Will be used as the tooltip for tab icon
-    title: Home
-    cards:
-        # Entities card will take a list of entities and show their state.
-      - type: entities
-        # Title of the entities card
-        title: Example
-        # The entities here will be shown in the same order as specified.
-        # Each entry is an entity ID or a map with extra options.
-        entities:
-          - light.kitchen
-          - switch.ac
-          - entity: light.living_room
-            # Override the name to use
-            name: LR Lights
-
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
