@@ -46,10 +46,19 @@ Status:
 
 Weather:
   entities:
-    - group.weatherbadges
-    - group.weatherconditionsbadges
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_temperature_low
+    - sensor.dark_sky_temperature_high
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_cloud_cover
+    - sensor.dark_sky_wind_speed
+    - sensor.friendly_wind_direction
     - sensor.dark_sky_daily_summary
-    - group.weatherforecastbadges
+    - sensor.dark_sky_temperature_high_1
+    - sensor.dark_sky_temperature_low_1
+    - sensor.dark_sky_precip_probability_1
+    - sensor.dark_sky_cloud_cover_1
+    - sensor.friendly_wind_direction_forecast
 
 Today:
   entities:
@@ -60,24 +69,3 @@ Today:
     - sensor.moon
     - sensor.friendly_date
     - sensor.dark_sky_hourly_summary
-
-weatherbadges:
-  entities:
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_daily_high_temperature
-    - sensor.dark_sky_daily_low_temperature
-
-weatherconditionsbadges:
-  entities:
-    - sensor.dark_sky_precip_probability
-    - sensor.dark_sky_cloud_coverage
-    - sensor.dark_sky_wind_speed
-    - sensor.friendly_wind_direction
-
-weatherforecastbadges:
-  entities:
-    - sensor.dark_sky_daily_high_temperature_1
-    - sensor.dark_sky_daily_low_temperature_1
-    - sensor.dark_sky_precip_probability_1
-    - sensor.dark_sky_cloud_coverage_1
-    - sensor.friendly_wind_direction_forecast
