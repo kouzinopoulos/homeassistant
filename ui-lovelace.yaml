@@ -1,4 +1,4 @@
-title: My Awesome Home
+title: My Awesome Home!
 # Include external resources
 resources:
   - url: /local/my-custom-card.js
@@ -15,23 +15,28 @@ views:
   - icon: mdi:home-assistant
     title: Home
     cards:
+     #- type: markdown
+     #   title: Greetings
+     #   content: >
+     #     Welcome **master**!
+      - type: entities
+        title: Home status
+        entities:
+          - group.status
+          - history_graph.heating_graph
       - type: entities
         title: Lights
         entities:
           - group.all_lights
-          - entity: light.kitchen_lamp
-            # Override the name to use
-            name: Kitchen light
-
+      - type: entities
+        title: Switches
+        entities:
+          - group.all_switches
         # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome **master**!
       - type: entities
         title: Configuration
         entities:
-          - group.Configuration
+          - group.configuration
       - type: entities
         title: Automation
         entities:
@@ -44,17 +49,31 @@ views:
         title: Heating panel
         entities:
           - climate.heating
-
-
-
-
-
-
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome **master**!
+      - id: peoplehome
+        type: entity-filter
+        entities:
+          - device_tracker.oneplus
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: People at home
+      - id: applianceson
+        type: entity-filter
+        entities:
+          - light.kitchen_lamp
+          - light.diner_lamp
+          - light.living_room_lamp
+          - light.study_lamp
+          - media_player.tv
+          - media_player.denon
+          - sensor.heating_power
+        state_filter:
+          - 'on'
+          - 'ON'
+        card:
+          type: glance
+          title: Activated appliances
     # View tab title.
   - icon: mdi:monitor
     title: Monitor
