@@ -54,8 +54,9 @@ Weather:
     - sensor.dark_sky_wind_speed
     - sensor.friendly_wind_direction
     - sensor.dark_sky_daily_summary
-    - sensor.dark_sky_temperature_high_1
+    - sensor.dark_sky_temperature_1
     - sensor.dark_sky_temperature_low_1
+    - sensor.dark_sky_temperature_high_1
     - sensor.dark_sky_precip_probability_1
     - sensor.dark_sky_cloud_cover_1
     - sensor.friendly_wind_direction_forecast

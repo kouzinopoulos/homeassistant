@@ -24,6 +24,12 @@
     - temperature_low
     - temperature_high
     - wind_bearing
+  forecast:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
   update_interval:
     minutes: 5
 - platform: template
