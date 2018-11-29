@@ -49,6 +49,8 @@ views:
         title: Heating panel
         entities:
           - climate.heating
+      - type: thermostat
+        entity: climate.heating
       - id: peoplehome
         type: entity-filter
         entities:
