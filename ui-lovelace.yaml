@@ -1,4 +1,4 @@
-title: My Awesome Home!
+title: My Home!
 # Include external resources
 resources:
   - url: /local/my-custom-card.js
@@ -15,10 +15,6 @@ views:
   - icon: mdi:home-assistant
     title: Home
     cards:
-     #- type: markdown
-     #   title: Greetings
-     #   content: >
-     #     Welcome **master**!
       - type: entities
         title: Home status
         entities:
@@ -32,7 +28,6 @@ views:
         title: Switches
         entities:
           - group.all_switches
-        # The markdown card will render markdown text.
       - type: entities
         title: Configuration
         entities:
@@ -51,8 +46,8 @@ views:
           - climate.heating
       - type: thermostat
         entity: climate.heating
-      - id: peoplehome
-        type: entity-filter
+      - type: entity-filter
+        id: peoplehome
         entities:
           - device_tracker.oneplus
         state_filter:
@@ -60,8 +55,8 @@ views:
         card:
           type: glance
           title: People at home
-      - id: applianceson
-        type: entity-filter
+      - type: entity-filter
+        id: applianceson
         entities:
           - light.kitchen_lamp
           - light.diner_lamp
@@ -76,44 +71,69 @@ views:
         card:
           type: glance
           title: Activated appliances
-    # View tab title.
-  - icon: mdi:monitor
-    title: Monitor
-    # Unique id for direct access /lovelace/${id}. If you don't specify one, it is added automatically.
-    id: monitor
-    # Optional background (overwrites the global background).
-    #background: radial-gradient(crimson, skyblue)
-    # Each view can have a different theme applied. Theme should be defined in the frontend.
-    theme: dark-mode
-    # The cards to show on this view.
-    cards:
-      - id: peoplehome
-        type: entity-filter
-        entities:
-          - device_tracker.oneplus
-        state_filter:
-          - 'home'
-        card:
-          type: glance
-          title: People at home
-      - id: applianceson
-        type: entity-filter
-        entities:
-          - light.kitchen_lamp
-          - light.diner_lamp
-          - light.living_room_lamp
-          - light.study_lamp
-          - media_player.tv
-          - media_player.denon
-          - sensor.heating_power
-        state_filter:
-          - 'on'
-          - 'ON'
-        card:
-          type: glance
-          title: Activated appliances
-
-       # The picture entity card will represent an entity with a picture
-      - type: picture-entity
-        image: https://www.home-assistant.io/images/default-social.png
-        entity: light.kitchen_lamp
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: >
+            ## Living room
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: light.living_room_lamp
+                    icon: mdi:desk-lamp
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: media_player.tv
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: media_player.denon
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: script.lr_tv_volume_up
+                    tap_action: toggle
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: script.cable_input
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: script.chromecast_input
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: script.switch_input
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                columns: 1
+                entities:
+                  - entity: script.lr_tv_volume_down
+                    tap_action: toggle
