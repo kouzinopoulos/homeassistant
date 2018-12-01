@@ -80,64 +80,67 @@ views:
         - type: markdown
           content: >
             ## Living room
-          - type: horizontal-stack
-            cards:
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: light.living_room_lamp
-                    icon: mdi:desk-lamp
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: media_player.tv
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: media_player.denon
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: script.lr_tv_volume_up
-                    tap_action: toggle
-          - type: horizontal-stack
-            cards:
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: script.cable_input
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: script.chromecast_input
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: script.switch_input
-                    tap_action: toggle
-              - type: glance
-                show_name: false
-                show_state: false
-                columns: 1
-                entities:
-                  - entity: script.lr_tv_volume_down
-                    tap_action: toggle
+        - type: horizontal-stack
+          cards:
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: light.living_room_lamp
+                  icon: mdi:desk-lamp
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: media_player.tv
+                  icon: mdi:television
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: media_player.denon
+                  icon: mdi:headphones
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: script.lr_tv_volume_up
+                  tap_action: toggle
+        - type: horizontal-stack
+          cards:
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: switch.plug_158d0001dcab9e
+                  icon: mdi:power-socket-eu
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: script.chromecast_input
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: script.switch_input
+                  tap_action: toggle
+            - type: glance
+              show_name: false
+              show_state: false
+              columns: 1
+              entities:
+                - entity: script.lr_tv_volume_down
+                  tap_action: toggle
