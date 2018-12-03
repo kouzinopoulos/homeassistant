@@ -58,7 +58,7 @@ history_graph:
       - sensor.dark_sky_temperature
       - sensor.dark_sky_daytime_high_temperature
       - sensor.dark_sky_overnight_low_temperature
-    hours_to_show: 24
+    hours_to_show: 6
     refresh: 60
 
 # View all events in a logbook

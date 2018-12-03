@@ -97,8 +97,8 @@
       data_template:
         message: "System is shutting down"
 
-# When no one is at home, turn off all lights
-- alias: Turn off lights when no one is at home
+# When no one is at home, turn off all lights and switches
+- alias: Turn off lights and switches when no one is at home
   trigger:
     platform: state
     entity_id: sensor.heating_tado_mode
@@ -106,6 +106,8 @@
     to: 'AWAY'
   action:
     - service: light.turn_off
+    - service: switch.turn_off
+      entity_id: switch.plug_158d0001dcab9e
 
 - alias: Turn off lights when watching Netflix
   initial_state: 'off'
