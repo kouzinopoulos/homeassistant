@@ -49,6 +49,10 @@ views:
           - climate.heating
       - type: thermostat
         entity: climate.heating
+      - type: entities
+        title: Security camera
+        entities:
+          - camera.foscam_camera
       - type: entity-filter
         id: peoplehome
         entities:

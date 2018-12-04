@@ -172,6 +172,12 @@ tado:
   username: !secret tado_username
   password: !secret tado_password
 
+camera:
+  - platform: foscam
+    ip: !secret cam_ip
+    username: !secret cam_user
+    password: !secret cam_password
+
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations
 group: !include groups.yaml
