@@ -19,14 +19,29 @@ views:
         title: Home status
         entities:
           - group.status
-      - type: entities
+      - type: history-graph
         title: Heating
         entities:
           - history_graph.heating_graph
-      - type: entities
+      - type: history-graph
+        title: Heating alternative
+        entities:
+          - sensor.heating_temperature
+          - sensor.dark_sky_temperature
+          - sensor.dark_sky_daytime_high_temperature
+          - sensor.dark_sky_overnight_low_temperature
+      - type: weather-forecast
+        entity: weather.dark_sky
+      - type: glance
         title: Lights
         entities:
           - group.all_lights
+      - type: map
+        aspect_ratio: 100%
+        default_zoom: 8
+        entities:
+          - device_tracker.oneplus
+          - zone.home
       - type: entities
         title: Switches
         entities:
