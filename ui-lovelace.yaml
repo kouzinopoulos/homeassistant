@@ -18,13 +18,13 @@ views:
       - type: entities
         title: Home status
         entities:
-          - group.status
+          - sensor.home_this_week
+          - sensor.away_this_week
+          - sensor.heating_on_this_week
+          - sensor.heating_off_this_week
+          - sensor.tv_on_this_week
       - type: history-graph
         title: Heating
-        entities:
-          - history_graph.heating_graph
-      - type: history-graph
-        title: Heating alternative
         entities:
           - sensor.heating_temperature
           - sensor.dark_sky_temperature
@@ -35,17 +35,35 @@ views:
       - type: glance
         title: Lights
         entities:
-          - group.all_lights
+          - entity: light.kitchen_lamp
+            name: Kitchen lamp
+            # icon: mdi:lightbulb-outline
+            tap_action: toggle
+          - entity: light.living_room_lamp
+            name: Living room lamp
+            # icon: mdi:lightbulb-outline
+            tap_action: toggle
+          - entity: light.diner_lamp
+            name: Diner lamp
+            # icon: mdi:lightbulb-outline
+            tap_action: toggle
+          - entity: light.study_lamp
+            name: Study lamp
+            # icon: mdi:lightbulb-outline
+            tap_action: toggle
       - type: map
         aspect_ratio: 100%
         default_zoom: 8
         entities:
           - device_tracker.oneplus
           - zone.home
-      - type: entities
+      - type: glance
         title: Switches
         entities:
-          - group.all_switches
+          - entity: switch.plug_158d0001dcab9e
+            name: Living room switch
+            # icon: mdi:lightbulb-outline
+            tap_action: toggle
       - type: entities
         title: Configuration
         entities:
@@ -54,10 +72,11 @@ views:
         title: Automation
         entities:
           - group.all_automations
-      - type: entities
+      - type: glance
         title: Media player
         entities:
-          - group.mediaplayer
+          - media_player.tv
+          - media_player.denon
       - type: entities
         title: Heating panel
         entities:
