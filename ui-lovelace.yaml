@@ -12,6 +12,7 @@ background: center / cover no-repeat url("/background.png") fixed
 excluded_entities:
   - weblink.router
 views:
+
   - icon: mdi:home-assistant
     title: Home
     cards:
@@ -30,10 +31,16 @@ views:
           - sensor.dark_sky_temperature
           - sensor.dark_sky_daytime_high_temperature
           - sensor.dark_sky_overnight_low_temperature
+      - type: entities
+        title: Heating control
+        entities:
+          - climate.heating
+      - type: thermostat
+        entity: climate.heating
       - type: weather-forecast
         entity: weather.dark_sky
       - type: glance
-        title: Lights
+        title: Lights and switches
         entities:
           - entity: light.kitchen_lamp
             name: Kitchen lamp
@@ -51,15 +58,6 @@ views:
             name: Study lamp
             # icon: mdi:lightbulb-outline
             tap_action: toggle
-      - type: map
-        aspect_ratio: 100%
-        default_zoom: 8
-        entities:
-          - device_tracker.oneplus
-          - zone.home
-      - type: glance
-        title: Switches
-        entities:
           - entity: switch.plug_158d0001dcab9e
             name: Living room switch
             # icon: mdi:lightbulb-outline
@@ -78,24 +76,9 @@ views:
           - media_player.tv
           - media_player.denon
       - type: entities
-        title: Heating panel
-        entities:
-          - climate.heating
-      - type: thermostat
-        entity: climate.heating
-      - type: entities
         title: Security camera
         entities:
           - camera.foscam_camera
-      - type: entity-filter
-        id: peoplehome
-        entities:
-          - device_tracker.oneplus
-        state_filter:
-          - 'home'
-        card:
-          type: glance
-          title: People at home
       - type: entity-filter
         id: applianceson
         entities:
@@ -110,9 +93,13 @@ views:
         state_filter:
           - 'on'
           - 'ON'
+          - 'Playing'
         card:
           type: glance
           title: Activated appliances
+  - title: Rooms
+    icon: mdi:floor-plan
+    cards:
       - type: vertical-stack
         cards:
         - type: markdown
@@ -126,7 +113,7 @@ views:
               columns: 1
               entities:
                 - entity: light.living_room_lamp
-                  icon: mdi:desk-lamp
+                  icon: mdi:floor-lamp
                   tap_action: toggle
             - type: glance
               show_name: false
@@ -154,3 +141,21 @@ views:
                 - entity: switch.plug_158d0001dcab9e
                   icon: mdi:power-socket-eu
                   tap_action: toggle
+  - title: Presence
+    icon: mdi:crosshairs-gps
+    cards:
+      - type: entity-filter
+        id: peoplehome
+        entities:
+          - device_tracker.oneplus
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: People at home
+      - type: map
+        aspect_ratio: 100%
+        default_zoom: 8
+        entities:
+          - device_tracker.oneplus
+          - zone.home
