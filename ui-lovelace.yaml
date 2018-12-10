@@ -41,6 +41,7 @@ views:
         entity: weather.dark_sky
       - type: glance
         title: Lights and switches
+        show_state: false
         entities:
           - entity: light.kitchen_lamp
             name: Kitchen lamp
@@ -65,12 +66,12 @@ views:
       - type: entities
         title: Configuration
         entities:
-          - group.configuration
+          - input_boolean.arm_alarm
       - type: entities
         title: Automation
         entities:
           - group.all_automations
-      - type: glance
+      - type: entities
         title: Media player
         entities:
           - media_player.tv

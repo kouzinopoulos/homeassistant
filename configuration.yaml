@@ -108,6 +108,7 @@ notify:
 
 weather:
   - platform: darksky
+    mode: daily
     api_key: !secret darksky_key
 
 input_boolean:
