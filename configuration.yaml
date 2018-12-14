@@ -179,6 +179,14 @@ camera:
     username: !secret cam_user
     password: !secret cam_password
 
+switch:
+  platform: command_line
+  switches:
+    foscam_motion:
+      command_on: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
+      command_off: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
+      command_state: 'curl -k --silent "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr=foscam&pwd=48241200ab" | grep -q "<isEnable>1</isEnable>'
+
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations
 group: !include groups.yaml

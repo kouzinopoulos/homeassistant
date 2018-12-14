@@ -26,11 +26,12 @@ views:
           - sensor.tv_on_this_week
       - type: history-graph
         title: Heating
+        hours_to_show: 6
         entities:
           - sensor.heating_temperature
           - sensor.dark_sky_temperature
-          - sensor.dark_sky_daytime_high_temperature
-          - sensor.dark_sky_overnight_low_temperature
+            #- sensor.dark_sky_daytime_high_temperature
+            #- sensor.dark_sky_overnight_low_temperature
       - type: entities
         title: Heating control
         entities:
