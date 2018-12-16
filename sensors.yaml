@@ -25,6 +25,7 @@
     - temperature_high
     - wind_bearing
   forecast:
+    - 0
     - 1
     - 2
     - 3

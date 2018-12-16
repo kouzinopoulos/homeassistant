@@ -12,7 +12,6 @@ background: center / cover no-repeat url("/background.png") fixed
 excluded_entities:
   - weblink.router
 views:
-
   - icon: mdi:home-assistant
     title: Home
     cards:
@@ -47,23 +46,28 @@ views:
           - entity: light.kitchen_lamp
             name: Kitchen lamp
             # icon: mdi:lightbulb-outline
-            tap_action: toggle
+            tap_action:
+              action: toggle
           - entity: light.living_room_lamp
             name: Living room lamp
             # icon: mdi:lightbulb-outline
-            tap_action: toggle
+            tap_action:
+              action: toggle
           - entity: light.diner_lamp
             name: Diner lamp
             # icon: mdi:lightbulb-outline
-            tap_action: toggle
+            tap_action:
+              action: toggle
           - entity: light.study_lamp
             name: Study lamp
             # icon: mdi:lightbulb-outline
-            tap_action: toggle
+            tap_action:
+              action: toggle
           - entity: switch.plug_158d0001dcab9e
             name: Living room switch
             # icon: mdi:lightbulb-outline
-            tap_action: toggle
+            tap_action:
+              action: toggle
       - type: entities
         title: Configuration
         entities:

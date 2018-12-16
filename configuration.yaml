@@ -148,8 +148,9 @@ cloud:
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
-  - mac: !secret xiaomi_gw_mac
-    key: !secret xiaomi_gw_key
+    - host: !secret xiaomi_gw_host
+      mac: !secret xiaomi_gw_mac
+      key: !secret xiaomi_gw_key
 
 light:
 - platform: yeelight
@@ -179,13 +180,16 @@ camera:
     username: !secret cam_user
     password: !secret cam_password
 
-switch:
-  platform: command_line
-  switches:
-    foscam_motion:
-      command_on: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
-      command_off: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
-      command_state: 'curl -k --silent "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr=foscam&pwd=48241200ab" | grep -q "<isEnable>1</isEnable>'
+#switch:
+#  platform: command_line
+#  switches:
+#    foscam_motion:
+#      command_on: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
+#      command_off: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
+#      command_state: 'curl -k --silent "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr=foscam&pwd=48241200ab" | grep -q "<isEnable>1</isEnable>'
+
+lovelace:
+  mode: yaml
 
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations
