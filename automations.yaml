@@ -148,3 +148,17 @@
       data:
         entity_id:
           - light.living_room_lamp
+
+# Test if the aqara switch is working
+- alias: Test single click event of the wall switch
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001aaad1c
+      click_type: single
+  action:
+    - service: persistent_notification.create
+      data:
+        title: "Aqara Wall Switch"
+        message: "Single press of the left button detected"
