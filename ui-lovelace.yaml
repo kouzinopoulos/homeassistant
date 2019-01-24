@@ -8,9 +8,6 @@ resources:
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
-# Exclude entities from "Unused entities" view
-excluded_entities:
-  - weblink.router
 views:
   - icon: mdi:home-assistant
     title: Home
@@ -23,14 +20,14 @@ views:
           - sensor.heating_on_this_week
           - sensor.heating_off_this_week
           - sensor.tv_on_this_week
-      - type: history-graph
-        title: Heating
-        hours_to_show: 6
-        entities:
-          - sensor.heating_temperature
-          - sensor.dark_sky_temperature
-            #- sensor.dark_sky_daytime_high_temperature
-            #- sensor.dark_sky_overnight_low_temperature
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.heating_temperature
+            graph: line
+          - type: sensor
+            entity: sensor.dark_sky_temperature
+            graph: line
       - type: entities
         title: Heating control
         entities:
@@ -39,6 +36,12 @@ views:
         entity: climate.heating
       - type: weather-forecast
         entity: weather.dark_sky
+      - type: entities
+        entities:
+          - entity: binary_sensor.motion_sensor_158d0001b179d9
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d0001a9805b
+            secondary_info: last-changed
       - type: glance
         title: Lights and switches
         show_state: false
