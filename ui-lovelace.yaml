@@ -20,16 +20,36 @@ views:
           - sensor.heating_on_this_week
           - sensor.heating_off_this_week
           - sensor.tv_on_this_week
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - type: sensor
-            name: Home temperature
-            entity: sensor.heating_temperature
-            graph: line
-          - type: sensor
-            name: Outside temperature
-            entity: sensor.dark_sky_temperature
-            graph: line
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              name: Home temperature
+              entity: sensor.heating_temperature
+              graph: line
+              detail: 2
+              hours_to_show: 6
+            - type: sensor
+              name: Outside temperature
+              entity: sensor.dark_sky_temperature
+              graph: line
+              detail: 2
+              hours_to_show: 6
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              name: Home temperature
+              entity: sensor.heating_temperature
+              graph: line
+              detail: 2
+              hours_to_show: 6
+            - type: sensor
+              name: Outside temperature
+              entity: sensor.dark_sky_temperature
+              graph: line
+              detail: 2
+              hours_to_show: 6
       - type: entities
         title: Heating control
         entities:

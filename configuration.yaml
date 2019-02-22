@@ -50,6 +50,18 @@ history:
       - climate
       - input_boolean
 
+recorder:
+  include:
+    domains:
+      - binary_sensor
+      - sensor
+      - switch
+      - media_player
+      - device_tracker
+      - light
+      - climate
+      - input_boolean
+
 history_graph:
   graph1:
     name: Heating Graph
