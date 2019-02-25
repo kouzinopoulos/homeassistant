@@ -133,7 +133,7 @@
           - light.kitchen_lamp
           - light.diner_lamp
 
-- alias: Turn on living room lamp if presence changed to home and sun is down
+- alias: Turn on lamps if presence changed to home and sun is down
   trigger:
     platform: state
     entity_id: sensor.heating_tado_mode
@@ -148,6 +148,7 @@
       data:
         entity_id:
           - light.living_room_lamp
+          - light.kitchen_lamp
 
 # Test if the aqara switch is working
 - alias: Test single click event of the wall switch
@@ -162,3 +163,28 @@
       data:
         title: "Aqara Wall Switch"
         message: "Single press of the left button detected"
+
+# Turn all lights off on bedroom switch left single click
+- alias: Test single click event of the wall switch
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.wall_switch_left_158d0002c5a7c2
+      click_type: single
+  action:
+    - service: light.turn_off
+    - service: switch.turn_off
+      entity_id: switch.plug_158d0001dcab9e
+
+# Warning if water is detected
+- alias: Warning if water is detected
+  trigger:
+    platform: state
+    entity_id: binary_sensor.water_leak_sensor_158d0002773fa1
+    from: 'off'
+    to: 'on'
+  action:
+    - service: notify.charis
+      data_template:
+        message: "Water leakage detected!!!"
