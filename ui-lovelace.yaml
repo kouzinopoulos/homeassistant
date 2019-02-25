@@ -25,28 +25,28 @@ views:
         - type: horizontal-stack
           cards:
             - type: sensor
-              name: Home temperature
+              name: Living room temperature
               entity: sensor.heating_temperature
               graph: line
               detail: 2
               hours_to_show: 6
             - type: sensor
-              name: Outside temperature
-              entity: sensor.dark_sky_temperature
+              name: Bedroom temperature
+              entity: sensor.temperature_158d0002c91220
               graph: line
               detail: 2
               hours_to_show: 6
         - type: horizontal-stack
           cards:
             - type: sensor
-              name: Home temperature
-              entity: sensor.heating_temperature
+              name: Outside temperature
+              entity: sensor.dark_sky_temperature
               graph: line
               detail: 2
               hours_to_show: 6
             - type: sensor
-              name: Outside temperature
-              entity: sensor.dark_sky_temperature
+              name: Bedroom humidity
+              entity: sensor.humidity_158d0002c91220
               graph: line
               detail: 2
               hours_to_show: 6
