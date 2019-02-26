@@ -186,14 +186,15 @@
     event_data:
       entity_id: binary_sensor.wall_switch_right_158d0002c5a7c2
       click_type: single
-  - service: light.turn_on
-    entity_id: light.living_room_lamp
-    data:
-      brightness: 100
-      color_name: red
-  - service: timer.start
-    data:
-      entity_id: timer.night
+  action:
+    - service: light.turn_on
+      entity_id: light.living_room_lamp
+      data:
+        brightness: 100
+        color_name: red
+    - service: timer.start
+      data:
+        entity_id: timer.night
 
 # Turn night light off after 10 minutes
 - alias: Turn night light off after 10 minutes
