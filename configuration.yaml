@@ -86,26 +86,9 @@ media_player:
   - platform: denonavr
     host: 192.168.1.201
     name: Denon
-    # show_all_sources: True / False
-    # timeout: POSITIVE INTEGER
-    # zones:
-    #   - zone: Zone2 / Zone3
-    #     name: NAME
   - platform: webostv
     host: 192.168.1.200
     name: TV
-    #filename: webostv.conf
-    #timeout: 5
-    #turn_on_action:
-    #  service: persistent_notification.create
-    #  data:
-    #    message: "Turn on action"
-    #customize:
-    #  sources:
-    #    - livetv
-    #    - youtube
-    #    - makotv
-    #    - netflix
 
 notify:
   - name: discord
@@ -151,11 +134,11 @@ input_boolean:
 #         to_state: below_horizon
 
 # Text to speech
-tts:
-  - platform: google
+# tts:
+#   - platform: google
 
 # Cloud
-cloud:
+# cloud:
 
 xiaomi_aqara:
   discovery_retry: 5
@@ -202,6 +185,10 @@ camera:
 
 lovelace:
   mode: yaml
+
+timer:
+  night:
+    duration: '00:10:00'
 
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations

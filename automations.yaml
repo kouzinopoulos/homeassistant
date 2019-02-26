@@ -151,7 +151,7 @@
           - light.kitchen_lamp
 
 # Toggle living room and kitchen lights with main switch single click
-- alias: Test single click event of the wall switch
+- alias: Toggle living room and kitchen lights
   trigger:
     platform: event
     event_type: xiaomi_aqara.click
@@ -166,7 +166,7 @@
           - light.kitchen_lamp
 
 # Turn all lights off on bedroom switch left single click
-- alias: Test single click event of the wall switch
+- alias: Turn all lights off
   trigger:
     platform: event
     event_type: xiaomi_aqara.click
@@ -177,6 +177,36 @@
     - service: light.turn_off
     - service: switch.turn_off
       entity_id: switch.plug_158d0001dcab9e
+
+# Turn night light on for 10 minutes
+- alias: Turn night light on for 10 minutes
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.wall_switch_right_158d0002c5a7c2
+      click_type: single
+  - service: light.turn_on
+    entity_id: light.living_room_lamp
+    data:
+      brightness: 100
+      color_name: red
+  - service: timer.start
+    data:
+      entity_id: timer.night
+
+# Turn night light off after 10 minutes
+- alias: Turn night light off after 10 minutes
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.night
+  action:
+    service: homeassistant.turn_off
+    data:
+      entity_id:
+        - light.living_room_lamp
 
 # Warning if water is detected
 - alias: Warning if water is detected
