@@ -39,14 +39,28 @@ views:
         - type: horizontal-stack
           cards:
             - type: sensor
-              name: Outside temperature
-              entity: sensor.dark_sky_temperature
+              name: Living room humidity
+              entity: sensor.heating_humidity
               graph: line
               detail: 2
               hours_to_show: 6
             - type: sensor
               name: Bedroom humidity
               entity: sensor.humidity_158d0002c91220
+              graph: line
+              detail: 2
+              hours_to_show: 6
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              name: Environmental temperature
+              entity: sensor.dark_sky_temperature
+              graph: line
+              detail: 2
+              hours_to_show: 6
+            - type: sensor
+              name: Precipitation probability
+              entity: sensor.dark_sky_precip_probability
               graph: line
               detail: 2
               hours_to_show: 6
