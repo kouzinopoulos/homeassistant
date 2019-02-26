@@ -150,7 +150,7 @@
           - light.living_room_lamp
           - light.kitchen_lamp
 
-# Test if the aqara switch is working
+# Toggle living room and kitchen lights with main switch single click
 - alias: Test single click event of the wall switch
   trigger:
     platform: event
@@ -159,10 +159,11 @@
       entity_id: binary_sensor.switch_158d0001aaad1c
       click_type: single
   action:
-    - service: persistent_notification.create
+    - service: homeassistant.toggle
       data:
-        title: "Aqara Wall Switch"
-        message: "Single press of the left button detected"
+        entity_id:
+          - light.living_room_lamp
+          - light.kitchen_lamp
 
 # Turn all lights off on bedroom switch left single click
 - alias: Test single click event of the wall switch
