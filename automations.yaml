@@ -119,6 +119,7 @@
     - service: light.turn_off
 
 - alias: Turn off living room/kitchen lights when no motion detected for 15 mins
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001b179d9
@@ -148,9 +149,9 @@
       data:
         entity_id:
           - light.living_room_lamp
-          - light.kitchen_lamp
+          - light.diner_lamp
 
-# Toggle living room and kitchen lights with main switch single click
+# Toggle living room and dinner lights with main switch single click
 - alias: Toggle living room and kitchen lights
   trigger:
     platform: event
@@ -163,7 +164,7 @@
       data:
         entity_id:
           - light.living_room_lamp
-          - light.kitchen_lamp
+          - light.diner_lamp
 
 # Turn all lights off on bedroom switch left single click
 - alias: Turn all lights off
