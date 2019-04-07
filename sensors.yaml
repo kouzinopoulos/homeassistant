@@ -30,7 +30,7 @@
     - 2
     - 3
     - 4
-  update_interval:
+  scan_interval:
     minutes: 5
 - platform: template
   sensors:

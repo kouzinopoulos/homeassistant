@@ -147,8 +147,7 @@ xiaomi_aqara:
       mac: !secret xiaomi_gw_mac
       key: !secret xiaomi_gw_key
 
-light:
-- platform: yeelight
+yeelight:
   devices:
     192.168.1.110:
       name: Diner lamp
