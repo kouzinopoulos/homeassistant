@@ -84,11 +84,14 @@ sun:
 
 media_player:
   - platform: denonavr
-    host: 192.168.1.201
+    host: 192.168.1.153
     name: Denon
   - platform: webostv
     host: 192.168.1.200
     name: TV
+
+heos:
+  host: 192.168.1.153
 
 notify:
   - name: discord
