@@ -134,6 +134,28 @@
           - light.kitchen_lamp
           - light.diner_lamp
 
+- alias: Turn on study lights when motion detected in study
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000313db82
+    to: 'on'
+  action:
+    - service: homeassistant.turn_on
+      date:
+        entity_id:
+          - light.study_lamp
+
+- alias: Turn off study lights when no motion detected in study
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000313db82
+    to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      date:
+        entity_id:
+          - light.study_lamp
+
 - alias: Turn on lamps if presence changed to home and sun is down
   trigger:
     platform: state
