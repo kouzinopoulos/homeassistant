@@ -90,13 +90,38 @@ views:
             # icon: mdi:lightbulb-outline
             tap_action:
               action: toggle
-          - entity: light.diner_lamp
-            name: Diner lamp
+          - entity: light.diner_lamp2
+            name: Diner lamp2
             # icon: mdi:lightbulb-outline
             tap_action:
               action: toggle
           - entity: light.study_lamp
             name: Study lamp
+            # icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+          - entity: light.diner_lamp1
+            name: Diner lamp 1
+            # icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+          - entity: light.tv_lamp1
+            name: TV lamp 1
+            # icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+          - entity: light.floor_lamp
+            name: Floor lamp
+            # icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+          - entity: light.tv_lamp2
+            name: TV lamp 2
+            # icon: mdi:lightbulb-outline
+            tap_action:
+              action: toggle
+          - entity: light.diner_lamp3
+            name: Diner lamp 3
             # icon: mdi:lightbulb-outline
             tap_action:
               action: toggle
@@ -135,6 +160,11 @@ views:
           - light.diner_lamp
           - light.living_room_lamp
           - light.study_lamp
+          - light.diner_lamp1
+          - light.tv_lamp1
+          - light.floor_lamp
+          - light.tv_lamp2
+          - light.study_lamp6
           - media_player.tv
           - media_player.denon
           - sensor.heating_power

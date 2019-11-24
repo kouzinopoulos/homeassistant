@@ -153,13 +153,23 @@ xiaomi_aqara:
 yeelight:
   devices:
     192.168.1.110:
-      name: Diner lamp
+      name: Diner lamp2
     192.168.1.111:
       name: Living room lamp
     192.168.1.112:
       name: Kitchen lamp
     192.168.1.113:
       name: Study lamp
+    192.168.1.114:
+      name: Diner lamp1
+    192.168.1.115:
+      name: TV lamp1
+    192.168.1.116:
+      name: Floor lamp
+    192.168.1.117:
+      name: TV lamp2
+    192.168.1.118:
+      name: Diner lamp3
 
 device_tracker:
   - platform: tado
@@ -191,6 +201,9 @@ lovelace:
 timer:
   night:
     duration: '00:10:00'
+
+
+system_health:
 
 automation: !include automations.yaml
 #automation: !include_dir_merge_list automations
