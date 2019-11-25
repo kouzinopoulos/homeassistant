@@ -97,32 +97,32 @@ views:
               action: toggle
           - entity: light.diner_lamp1
             name: Diner lamp 1
-            # icon: mdi:lightbulb-outline
+            icon: mdi:ceiling-light
             tap_action:
               action: toggle
           - entity: light.diner_lamp2
-            name: Diner lamp2
-            # icon: mdi:lightbulb-outline
+            name: Diner lamp 2
+            icon: mdi:ceiling-light
             tap_action:
               action: toggle
           - entity: light.diner_lamp3
             name: Diner lamp 3
-            # icon: mdi:lightbulb-outline
+            icon: mdi:ceiling-light
             tap_action:
               action: toggle
           - entity: light.tv_lamp1
             name: TV lamp 1
-            # icon: mdi:lightbulb-outline
+            icon: mdi:ceiling-light
             tap_action:
               action: toggle
           - entity: light.tv_lamp2
             name: TV lamp 2
-            # icon: mdi:lightbulb-outline
+            icon: mdi:ceiling-light
             tap_action:
               action: toggle
           - entity: light.floor_lamp
             name: Floor lamp
-            # icon: mdi:lightbulb-outline
+            icon: mdi:floor-lamp-variant
             tap_action:
               action: toggle
           - entity: switch.plug_158d0001dcab9e

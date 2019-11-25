@@ -198,9 +198,9 @@ camera:
 lovelace:
   mode: yaml
 
-timer:
-  night:
-    duration: '00:10:00'
+  #timer:
+  #night:
+  #  duration: '00:10:00'
 
 
 system_health:
