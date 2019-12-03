@@ -20,10 +20,8 @@ views:
           - sensor.heating_on_this_week
           - sensor.heating_off_this_week
           - sensor.tv_on_this_week
-      - type: entities
-        title: Heating control
-        entities:
-          - climate.heating
+      - type: thermostat
+        entity: climate.heating
       - type: entities
         entities:
           - entity: binary_sensor.motion_sensor_158d0001b179d9
