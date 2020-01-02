@@ -5,7 +5,8 @@ resources:
     type: js
   - url: /local/my-webfont.css
     type: css
-
+  - url: /local/xiaomi-vacuum-card.js?v=2.3.2
+    type: js
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
 views:
@@ -128,6 +129,11 @@ views:
         card:
           type: glance
           title: Activated appliances
+      - type: custom:xiaomi-vacuum-card
+        entity: vacuum.xiaomi_vacuum_cleaner
+        image: false
+        name: Roborock
+        buttons: true
   - icon: mdi:weather-partly-cloudy
     title: Weather
     cards:
