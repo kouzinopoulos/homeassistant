@@ -141,7 +141,7 @@
     to: 'on'
   action:
     - service: homeassistant.turn_on
-      date:
+      data:
         entity_id:
           - light.study_lamp
 
@@ -152,7 +152,7 @@
     to: 'off'
   action:
     - service: homeassistant.turn_off
-      date:
+      data:
         entity_id:
           - light.study_lamp
 

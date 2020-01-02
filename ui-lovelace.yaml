@@ -20,8 +20,6 @@ views:
           - sensor.heating_on_this_week
           - sensor.heating_off_this_week
           - sensor.tv_on_this_week
-      - type: thermostat
-        entity: climate.heating
       - type: entities
         entities:
           - entity: binary_sensor.motion_sensor_158d0001b179d9
@@ -179,6 +177,8 @@ views:
               hours_to_show: 6
       - type: weather-forecast
         entity: weather.dark_sky
+      - type: thermostat
+        entity: climate.heating
   - title: Rooms
     icon: mdi:floor-plan
     cards:
