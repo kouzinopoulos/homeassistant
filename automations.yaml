@@ -97,8 +97,8 @@
       data_template:
         message: "System is shutting down"
 
-# When no one is at home, turn off all lights and switches
-- alias: Turn off lights and switches when no one is at home
+# When noone is at home, turn off all lights and switches
+- alias: Turn off lights and switches when noone is at home
   trigger:
     platform: state
     entity_id: sensor.heating_tado_mode
@@ -171,7 +171,7 @@
       data:
         entity_id:
           - light.living_room_lamp
-          - light.diner_lamp
+          - light.diner_lamp1
 
 # Toggle living room and dinner lights with main switch single click
 - alias: Toggle living room and kitchen lights
@@ -186,7 +186,7 @@
       data:
         entity_id:
           - light.living_room_lamp
-          - light.diner_lamp
+          - light.diner_lamp1
 
 # Turn all lights off on bedroom switch left single click
 - alias: Turn all lights off
@@ -203,6 +203,7 @@
 
 # Turn night light on for 10 minutes
 - alias: Turn night light on for 10 minutes
+  initial_state: 'off'
   trigger:
     platform: event
     event_type: xiaomi_aqara.click
