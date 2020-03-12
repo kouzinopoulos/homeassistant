@@ -5,7 +5,7 @@ resources:
     type: js
   - url: /local/my-webfont.css
     type: css
-  - url: /local/xiaomi-vacuum-card.js?v=2.3.2
+  - url: /local/xiaomi-vacuum-card.js?v=3.0.1
     type: js
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
@@ -88,10 +88,6 @@ views:
         entities:
           - input_boolean.arm_alarm
       - type: entities
-        title: Automation
-        entities:
-          - group.all_automations
-      - type: entities
         title: Media player
         entities:
           - media_player.tv
@@ -143,7 +139,7 @@ views:
           cards:
             - type: sensor
               name: Living room temperature
-              entity: sensor.heating_temperature
+              entity: sensor.heating_temperature_2
               graph: line
               detail: 2
               hours_to_show: 6
@@ -157,7 +153,7 @@ views:
           cards:
             - type: sensor
               name: Living room humidity
-              entity: sensor.heating_humidity
+              entity: sensor.heating_humidity_2
               graph: line
               detail: 2
               hours_to_show: 6
