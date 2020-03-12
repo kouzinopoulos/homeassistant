@@ -198,6 +198,16 @@
       click_type: single
   action:
     - service: light.turn_off
+      entity_id:
+        - light.kitchen_lamp
+        - light.living_room_lamp
+        - light.study_lamp
+        - light.diner_lamp1
+        - light.diner_lamp2
+        - light.diner_lamp3
+        - light.tv_lamp1
+        - light.tv_lamp2
+        - light.floor_lamp
     - service: switch.turn_off
       entity_id: switch.plug_158d0001dcab9e
 
