@@ -62,16 +62,16 @@ recorder:
       - climate
       - input_boolean
 
-history_graph:
-  graph1:
-    name: Heating Graph
-    entities:
-      - sensor.heating_temperature
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_daytime_high_temperature
-      - sensor.dark_sky_overnight_low_temperature
-    hours_to_show: 6
-    refresh: 60
+# history_graph:
+#  graph1:
+#    name: Heating Graph
+#    entities:
+#      - sensor.heating_temperature
+#      - sensor.dark_sky_temperature
+#      - sensor.dark_sky_daytime_high_temperature
+#      - sensor.dark_sky_overnight_low_temperature
+#    hours_to_show: 6
+#    refresh: 60
 
 # View all events in a logbook
 logbook:
@@ -83,9 +83,9 @@ map:
 sun:
 
 media_player:
-  - platform: denonavr
-    host: 192.168.1.153
-    name: Denon
+#  - platform: denonavr
+#    host: 192.168.1.153
+#    name: Denon
   - platform: webostv
     host: 192.168.1.200
     name: TV

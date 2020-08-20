@@ -1,5 +1,4 @@
 default_view:
-  view: yes
   icon: mdi:home-assistant
   entities:
     - group.Status
@@ -29,14 +28,12 @@ mediaplayer:
 
 Climate:
   icon: mdi:thermometer
-  view: yes
   entities:
     - group.Weather
     - group.Today
     - group.Indoors
 
 Status:
-  control: hidden
   entities:
     - sensor.home_this_week
     - sensor.away_this_week
