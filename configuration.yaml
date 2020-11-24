@@ -94,8 +94,8 @@ webostv:
   - host: 192.168.1.200
     name: TV
 
-heos:
-  host: 192.168.1.153
+    #heos:
+    #host: 192.168.1.153
 
 notify:
   - name: discord
@@ -147,12 +147,12 @@ input_boolean:
 # Cloud
 # cloud:
 
-xiaomi_aqara:
-  discovery_retry: 5
-  gateways:
-    - host: !secret xiaomi_gw_host
-      mac: !secret xiaomi_gw_mac
-      key: !secret xiaomi_gw_key
+#xiaomi_aqara:
+#  discovery_retry: 5
+#  gateways:
+#    - host: !secret xiaomi_gw_host
+#      mac: !secret xiaomi_gw_mac
+#      key: !secret xiaomi_gw_key
 
 yeelight:
   devices:
@@ -211,6 +211,13 @@ lovelace:
   #night:
   #  duration: '00:10:00'
 
+  resources:
+    - url: /local/my-custom-card.js
+      type: js
+    - url: /local/my-webfont.css
+      type: css
+    - url: /local/xiaomi-vacuum-card.js?v=4.1.0
+      type: js
 
 system_health:
 
