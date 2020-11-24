@@ -5,14 +5,14 @@ views:
   - icon: mdi:home-assistant
     title: Home
     cards:
-      - type: entities
-        title: Home status
-        entities:
-          - sensor.home_this_week
-          - sensor.away_this_week
-          - sensor.heating_on_this_week
-          - sensor.heating_off_this_week
-          - sensor.tv_on_this_week
+      # - type: entities
+      #   title: Home status
+      #   entities:
+      #     - sensor.home_this_week
+      #     - sensor.away_this_week
+      #     - sensor.heating_on_this_week
+      #     - sensor.heating_off_this_week
+      #     - sensor.tv_on_this_week
       - type: entities
         entities:
           - entity: binary_sensor.motion_sensor_158d0001b179d9
@@ -75,10 +75,10 @@ views:
             # icon: mdi:lightbulb-outline
             tap_action:
               action: toggle
-      - type: entities
-        title: Configuration
-        entities:
-          - input_boolean.arm_alarm
+      # - type: entities
+      #   title: Configuration
+      #   entities:
+      #     - input_boolean.arm_alarm
       - type: entities
         title: Media player
         entities:
@@ -122,57 +122,99 @@ views:
         image: false
         name: Roborock
         buttons: true
-  - icon: mdi:weather-partly-cloudy
-    title: Weather
-    cards:
-      - type: vertical-stack
+      - type: grid
         cards:
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              name: Living room temperature
-              entity: sensor.heating_temperature_2
-              graph: line
-              detail: 2
-              hours_to_show: 6
-            - type: sensor
-              name: Bedroom temperature
-              entity: sensor.temperature_158d0002c91220
-              graph: line
-              detail: 2
-              hours_to_show: 6
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              name: Living room humidity
-              entity: sensor.heating_humidity_2
-              graph: line
-              detail: 2
-              hours_to_show: 6
-            - type: sensor
-              name: Bedroom humidity
-              entity: sensor.humidity_158d0002c91220
-              graph: line
-              detail: 2
-              hours_to_show: 6
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              name: Environmental temperature
-              entity: sensor.dark_sky_temperature
-              graph: line
-              detail: 2
-              hours_to_show: 6
-            - type: sensor
-              name: Precipitation probability
-              entity: sensor.dark_sky_precip_probability
-              graph: line
-              detail: 2
-              hours_to_show: 6
-      - type: weather-forecast
-        entity: weather.dark_sky
-      - type: thermostat
-        entity: climate.heating
+          - type: sensor
+            name: Living room temperature
+            entity: sensor.heating_temperature_2
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: sensor
+            name: Bedroom temperature
+            entity: sensor.temperature_158d0002c91220
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: sensor
+            name: Living room humidity
+            entity: sensor.heating_humidity_2
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: sensor
+            name: Bedroom humidity
+            entity: sensor.humidity_158d0002c91220
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: sensor
+            name: Environmental temperature
+            entity: sensor.dark_sky_temperature
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: sensor
+            name: Precipitation probability
+            entity: sensor.dark_sky_precip_probability
+            graph: line
+            detail: 2
+            hours_to_show: 6
+          - type: weather-forecast
+            entity: weather.dark_sky
+          - type: thermostat
+            entity: climate.heating
+  # - icon: mdi:weather-partly-cloudy
+  #   title: Weather
+  #   cards:
+  #     - type: vertical-stack
+  #       cards:
+  #       - type: horizontal-stack
+  #         cards:
+  #           - type: sensor
+  #             name: Living room temperature
+  #             entity: sensor.heating_temperature_2
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #           - type: sensor
+  #             name: Bedroom temperature
+  #             entity: sensor.temperature_158d0002c91220
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #       - type: horizontal-stack
+  #         cards:
+  #           - type: sensor
+  #             name: Living room humidity
+  #             entity: sensor.heating_humidity_2
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #           - type: sensor
+  #             name: Bedroom humidity
+  #             entity: sensor.humidity_158d0002c91220
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #       - type: horizontal-stack
+  #         cards:
+  #           - type: sensor
+  #             name: Environmental temperature
+  #             entity: sensor.dark_sky_temperature
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #           - type: sensor
+  #             name: Precipitation probability
+  #             entity: sensor.dark_sky_precip_probability
+  #             graph: line
+  #             detail: 2
+  #             hours_to_show: 6
+  #     - type: weather-forecast
+  #       entity: weather.dark_sky
+  #     - type: thermostat
+  #       entity: climate.heating
   - title: Rooms
     icon: mdi:floor-plan
     cards:

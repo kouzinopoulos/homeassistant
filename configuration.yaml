@@ -211,13 +211,13 @@ lovelace:
   #night:
   #  duration: '00:10:00'
 
-  resources:
-    - url: /local/my-custom-card.js
-      type: js
-    - url: /local/my-webfont.css
-      type: css
-    - url: /local/xiaomi-vacuum-card.js?v=4.1.0
-      type: js
+resources:
+  - url: /local/my-custom-card.js
+    type: js
+  - url: /local/my-webfont.css
+    type: css
+  - url: /local/xiaomi-vacuum-card.js?v=4.1.0
+    type: js
 
 system_health:
 
