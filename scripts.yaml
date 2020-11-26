@@ -1,0 +1,24 @@
+lights_out:
+  alias: Lights out
+  icon: mdi:power
+  description: Turns all lights and switches off
+  mode: single
+  sequence:
+    - alias: Turn all lights off
+      service: light.turn_off
+      data:
+        entity_id:
+          - light.kitchen_lamp
+          - light.living_room_lamp
+          - light.study_lamp
+          - light.diner_lamp1
+          - light.diner_lamp2
+          - light.diner_lamp3
+          - light.tv_lamp1
+          - light.tv_lamp2
+          - light.floor_lamp
+    - alias: Turn all switches off
+      service: switch.turn_off
+      data:
+        entity_id: switch.plug_158d0001dcab9e
+
