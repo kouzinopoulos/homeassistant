@@ -105,9 +105,9 @@
     from: 'HOME'
     to: 'AWAY'
   action:
-    - service: light.turn_off
-    - service: switch.turn_off
-      entity_id: switch.plug_158d0001dcab9e
+  - service: script.turn_on
+    data:
+      entity_id: script.lights_out
 
 - alias: Turn off lights when watching Netflix
   initial_state: 'off'
@@ -132,9 +132,13 @@
         entity_id:
           - light.living_room_lamp
           - light.kitchen_lamp
-          - light.diner_lamp
+          - light.diner_lamp1
+          - light.diner_lamp2
+          - light.tv_lamp1
+          - light.tv_lamp2
 
 - alias: Turn on study lights when motion detected in study
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d000313db82
@@ -146,6 +150,7 @@
           - light.study_lamp
 
 - alias: Turn off study lights when no motion detected in study
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d000313db82
@@ -200,6 +205,7 @@
   - service: script.turn_on
     data:
       entity_id: script.lights_out
+
 # Turn all lights off on bedroom switch left single click
 - alias: Turn all lights off
   trigger:
@@ -212,6 +218,7 @@
   - service: script.turn_on
     data:
       entity_id: script.lights_out
+
 # Turn night light on for 10 minutes
 - alias: Turn night light on for 10 minutes
   initial_state: 'off'
@@ -233,6 +240,7 @@
 
 # Turn night light off after 10 minutes
 - alias: Turn night light off after 10 minutes
+  initial_state: 'off'
   trigger:
     platform: event
     event_type: timer.finished
