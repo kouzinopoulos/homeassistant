@@ -5,14 +5,14 @@ views:
   - icon: mdi:home-assistant
     title: Home
     cards:
-      # - type: entities
-      #   title: Home status
-      #   entities:
-      #     - sensor.home_this_week
-      #     - sensor.away_this_week
-      #     - sensor.heating_on_this_week
-      #     - sensor.heating_off_this_week
-      #     - sensor.tv_on_this_week
+      - type: entities
+        title: Home status
+        entities:
+          - sensor.home_this_week
+          - sensor.away_this_week
+          - sensor.heating_on_this_week
+          - sensor.heating_off_this_week
+          - sensor.tv_on_this_week
       - type: entities
         entities:
           - entity: binary_sensor.motion_sensor_158d0001b179d9
@@ -93,6 +93,8 @@ views:
           - media_player.tv
           - media_player.denon
           - media_player.denon_avr_x2400h
+      - type: media-control
+        entity: media_player.denon_avr_x2400h
       - type: entities
         title: Security camera
         entities:
@@ -116,7 +118,7 @@ views:
           - light.floor_lamp
           - media_player.tv
           - media_player.denon
-          - sensor.heating_power
+          - sensor.heating_power_2
           - switch.plug_158d0001dcab9e
         state_filter:
           - 'on'
