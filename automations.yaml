@@ -69,7 +69,7 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: sensor.heating_tado_mode
+    entity_id: sensor.heating_tado_mode_2
     state: 'AWAY'
   action:
     - service: notify.charis
@@ -101,7 +101,7 @@
 - alias: Turn off lights and switches when noone is at home
   trigger:
     platform: state
-    entity_id: sensor.heating_tado_mode
+    entity_id: sensor.heating_tado_mode_2
     from: 'HOME'
     to: 'AWAY'
   action:
@@ -164,7 +164,7 @@
 - alias: Turn on lamps if presence changed to home and sun is down
   trigger:
     platform: state
-    entity_id: sensor.heating_tado_mode
+    entity_id: sensor.heating_tado_mode_2
     from: 'AWAY'
     to: 'HOME'
   condition:
@@ -172,11 +172,9 @@
       entity_id: sun.sun
       state: 'below_horizon'
   action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - light.living_room_lamp
-          - light.diner_lamp1
+  - service: script.turn_on
+    data:
+      entity_id: script.essential_lights_on
 
 # Toggle living room and dinner lights with main switch single click
 - alias: Toggle living room and kitchen lights
@@ -187,11 +185,9 @@
       entity_id: binary_sensor.switch_158d0001aaad1c
       click_type: single
   action:
-    - service: homeassistant.toggle
-      data:
-        entity_id:
-          - light.living_room_lamp
-          - light.diner_lamp1
+  - service: script.turn_on
+    data:
+      entity_id: script.essential_lights_on
 
 # Turn all lights off on main switch double click
 - alias: Turn all lights off on main switch double click

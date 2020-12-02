@@ -22,3 +22,15 @@ lights_out:
       data:
         entity_id: switch.plug_158d0001dcab9e
 
+essential_lights_on:
+  alias: Essential lights on
+  icon: mdi:power
+  description: Turns essential lights on
+  mode: single
+  sequence:
+    - alias: Turn essential lights on
+      service: light.turn_on
+      data:
+        entity_id:
+          - light.living_room_lamp
+          - light.diner_lamp1
