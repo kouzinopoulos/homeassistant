@@ -34,3 +34,16 @@ essential_lights_on:
         entity_id:
           - light.living_room_lamp
           - light.diner_lamp1
+
+essential_lights_toggle:
+  alias: Essential lights toggle
+  icon: mdi:power
+  description: Toggles essential lights on
+  mode: single
+  sequence:
+    - alias: Toggle essential lights on
+      service: light.toggle
+      data:
+        entity_id:
+          - light.living_room_lamp
+          - light.diner_lamp1
