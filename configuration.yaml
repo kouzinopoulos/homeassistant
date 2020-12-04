@@ -98,15 +98,10 @@ webostv:
     #host: 192.168.1.153
 
 notify:
-  - name: discord
-    platform: discord
-    token: !secret discord_token
-  - name: charis
-    platform: group
-    services:
-      - service: discord
-        data:
-          target: !secret discord_channel_id
+  - name: slack
+    platform: slack
+    api_key: !secret slack_token
+    default_channel: '#general'
 
 weather:
   - platform: darksky

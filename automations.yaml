@@ -39,9 +39,16 @@
         gw_mac: !secret xiaomi_gw_mac
         ringtone_id: 8
         ringtone_vol: 10
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "Alarm armed"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: 'Alarm armed' 
 
 # 1c. When disarming the alarm, play a sound from the gateway and send a notification
 - alias: Alarm disarming visual/textual notification
@@ -56,9 +63,16 @@
         gw_mac: !secret xiaomi_gw_mac
         ringtone_id: 4
         ringtone_vol: 10
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "Alarm disarmed"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: 'Alarm disarmed' 
 
 # 2. When oneplus is away and motion is detected, fire an alarm
 - alias: Alert when motion detected while away
@@ -72,9 +86,16 @@
     entity_id: sensor.heating_tado_mode_2
     state: 'AWAY'
   action:
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "MOTION DETECTED!!"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: ':police_car: Warning! Motion detected! :police_car:' 
 
 # Home assistant startup and shutdown notifications
 - alias: Notify on startup
@@ -83,9 +104,16 @@
       platform: homeassistant
   condition: []
   action:
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "System is up and running"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: ':star: Home Assistant is starting! :star:' 
 
 - alias: Notify on shutdown
   trigger:
@@ -93,9 +121,16 @@
       platform: homeassistant
   condition: []
   action:
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "System is shutting down"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: 'Home Assistant is shutting down! :pensive: :pensive:' 
 
 # When noone is at home, turn off all lights and switches
 - alias: Turn off lights and switches when noone is at home
@@ -257,6 +292,13 @@
     from: 'off'
     to: 'on'
   action:
-    - service: notify.charis
+    - service: notify.slack
       data_template:
-        message: "Water leakage detected!!!"
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: section
+              text:
+                type: mrkdwn
+                text: 'Water leakage detected! :potable_water:' 
