@@ -38,12 +38,24 @@ essential_lights_on:
 essential_lights_toggle:
   alias: Essential lights toggle
   icon: mdi:power
-  description: Toggles essential lights on
+  description: Toggles essential lights
   mode: single
   sequence:
-    - alias: Toggle essential lights on
+    - alias: Toggle essential lights
       service: light.toggle
       data:
         entity_id:
           - light.living_room_lamp
           - light.diner_lamp1
+
+study_lights_toggle:
+  alias: Study lights toggle
+  icon: mdi:power
+  description: Toggles study lights
+  mode: single
+  sequence:
+    - alias: Toggle study lights
+      service: light.toggle
+      data:
+        entity_id:
+          - light.study_lamp
