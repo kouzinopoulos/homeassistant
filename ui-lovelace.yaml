@@ -117,13 +117,14 @@ views:
           - light.tv_lamp2
           - light.floor_lamp
           - media_player.tv
-          - media_player.denon
+          - media_player.denon_avr_x2400h
           - sensor.heating_power_2
           - switch.plug_158d0001dcab9e
         state_filter:
           - 'on'
           - 'ON'
           - 'Playing'
+          - 'idle'
         card:
           type: glance
           title: Activated appliances
