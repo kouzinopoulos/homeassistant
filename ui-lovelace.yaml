@@ -99,6 +99,9 @@ views:
         title: Security camera
         entities:
           - camera.foscam_camera
+      - type: entities
+        entities:
+          - vacuum.robot_vacuum
       - type: picture-glance
         title: Home camera
         entities:
@@ -128,11 +131,6 @@ views:
         card:
           type: glance
           title: Activated appliances
-      - type: custom:xiaomi-vacuum-card
-        entity: vacuum.xiaomi_vacuum_cleaner
-        image: false
-        name: Roborock
-        buttons: true
   - icon: mdi:weather-partly-cloudy
     title: Weather
     cards:
