@@ -176,20 +176,20 @@ device_tracker:
     password: !secret tado_password
     home_id: !secret tado_home_id
 
-tado:
-  username: !secret tado_username
-  password: !secret tado_password
+#tado:
+#  username: !secret tado_username
+#  password: !secret tado_password
 
-camera:
-  - platform: foscam
-    ip: !secret cam_ip
-    username: !secret cam_user
-    password: !secret cam_password
+#camera:
+#  - platform: foscam
+#    ip: !secret cam_ip
+#    username: !secret cam_user
+#    password: !secret cam_password
 
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.1.174
-    token: !secret roborock_token
+#vacuum:
+#  - platform: xiaomi_miio
+#    host: 192.168.1.174
+#    token: !secret roborock_token
 
 #switch:
 #  platform: command_line

@@ -72,7 +72,26 @@
             - type: section
               text:
                 type: mrkdwn
-                text: 'Alarm disarmed' 
+                text: 'Alarm disarmed'
+
+- alias: Test alarm
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001b179d9
+    from: 'off'
+    to: 'on'
+  action:
+    - service: notify.slack
+      data_template:
+        message: ""
+        title: ""
+        data:
+          blocks:
+            - type: image
+              block_id: image123
+              #image_url: 'https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/d3/72/5c/d3725c8f-c642-5d69-1904-aa36e4297885/source/256x256bb.jpg'
+              image_url: '/home/homeassistant/.homeassistant/capture.jpg'
+              alt_text: 'Captured image'
 
 # 2. When oneplus is away and motion is detected, fire an alarm
 - alias: Alert when motion detected while away
