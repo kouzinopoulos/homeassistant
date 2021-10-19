@@ -91,10 +91,12 @@ views:
         title: Media player
         entities:
           - media_player.tv
-          - media_player.denon
+          - media_player.spotify_charis
           - media_player.denon_avr_x2400h
       - type: media-control
         entity: media_player.denon_avr_x2400h
+      - type: media-control
+        entity: media_player.spotify_charis
       - type: entities
         title: Security camera
         entities:
@@ -121,6 +123,7 @@ views:
           - light.floor_lamp
           - media_player.tv
           - media_player.denon_avr_x2400h
+          - media_player.spotify_charis
           - sensor.heating_power_2
           - switch.plug_158d0001dcab9e
         state_filter:

@@ -114,6 +114,12 @@ input_boolean:
     initial: off
     icon: mdi:security
 
+mobile_app:
+
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
+
 # binary_sensor:
 #   - platform: bayesian
 #     name: In Bed
