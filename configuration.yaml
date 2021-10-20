@@ -199,6 +199,9 @@ device_tracker:
 #      command_off: 'curl -k "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable=1&usr=foscam&pwd=48241200ab"'
 #      command_state: 'curl -k --silent "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr=foscam&pwd=48241200ab" | grep -q "<isEnable>1</isEnable>'
 
+downloader:
+  download_dir: 'www'
+
 lovelace:
   mode: yaml
 

@@ -277,3 +277,22 @@
       data:
         title: "Warning"
         message: "Water leakage detected! :potable_water:"
+
+- id: lounge_snapshot
+  alias: Lounge snapshot
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001b179d9
+    to: 'on'
+  action:
+  - service: downloader.download_file
+    data_template:
+      url: "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=foscam&pwd=48241200ab"
+      filename: "snap.jpg"
+      overwrite: true
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Home Alert"
+      message: "Motion Detected"
+      data:
+        file_url: https://192.168.1.187/local/snap.jpg
