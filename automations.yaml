@@ -63,10 +63,10 @@
         message: "Alarm disarmed"
 
 # 2. When oneplus is away and motion is detected, fire an alarm
-- alias: Alert when motion detected while away
+- alias: Alert when any motion detected while away
   trigger:
     platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001b179d9
+    entity_id: group.motion_sensor
     from: 'off'
     to: 'on'
   condition:

@@ -12,19 +12,39 @@ default_view:
     - group.all_devices
     - climate.heating
 
+All_lights:
+  name: 'All lights'
+  entities:
+    - light.kitchen_lamp
+    - light.living_room_lamp
+    - light.study_lamp
+    - light.diner_lamp1
+    - light.diner_lamp2
+    - light.diner_lamp3
+    - light.tv_lamp1
+    - light.tv_lamp2
+    - light.floor_lamp
+
+All_switches:
+  name: 'All switches'
+  entities:
+    - switch.plug_158d0001dcab9e
+
 Configuration:
   entities:
     - input_boolean.arm_alarm
 
-Motion:
+Motion_sensor:
   entities:
     - binary_sensor.motion_sensor_158d0001b179d9
+    - binary_sensor.motion_sensor_158d000313db82
 
-mediaplayer:
+Media_player:
   name: 'Media Player'
   entities:
     - media_player.tv
-    - media_player.denon
+    - media_player.spotify_charis
+    - media_player.denon_avr_x2400h
 
 Climate:
   icon: mdi:thermometer
