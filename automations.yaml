@@ -39,16 +39,10 @@
         gw_mac: !secret xiaomi_gw_mac
         ringtone_id: 8
         ringtone_vol: 10
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: 'Alarm armed' 
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm"
+        message: "Alarm armed"
 
 # 1c. When disarming the alarm, play a sound from the gateway and send a notification
 - alias: Alarm disarming visual/textual notification
@@ -63,35 +57,10 @@
         gw_mac: !secret xiaomi_gw_mac
         ringtone_id: 4
         ringtone_vol: 10
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: 'Alarm disarmed'
-
-- alias: Test alarm
-  trigger:
-    platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001b179d9
-    from: 'off'
-    to: 'on'
-  action:
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: image
-              block_id: image123
-              #image_url: 'https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/d3/72/5c/d3725c8f-c642-5d69-1904-aa36e4297885/source/256x256bb.jpg'
-              image_url: '/home/homeassistant/.homeassistant/capture.jpg'
-              alt_text: 'Captured image'
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm"
+        message: "Alarm disarmed"
 
 # 2. When oneplus is away and motion is detected, fire an alarm
 - alias: Alert when motion detected while away
@@ -105,51 +74,31 @@
     entity_id: sensor.heating_tado_mode_2
     state: 'AWAY'
   action:
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: ':police_car: Warning! Motion detected! :police_car:' 
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm"
+        message: ":police_car: Warning! Motion detected! :police_car:"
 
 # Home assistant startup and shutdown notifications
 - alias: Notify on startup
   trigger:
     - event: start
       platform: homeassistant
-  condition: []
   action:
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: ':star: Home Assistant is starting! :star:' 
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Notification"
+        message: ":star: Home Assistant is starting! :star:"
 
 - alias: Notify on shutdown
   trigger:
     - event: shutdown
       platform: homeassistant
-  condition: []
   action:
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: 'Home Assistant is shutting down! :pensive: :pensive:' 
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Notification"
+        message: "Home Assistant is shutting down! :pensive: :pensive:"
 
 # When noone is at home, turn off all lights and switches
 - alias: Turn off lights and switches when noone is at home
@@ -324,13 +273,7 @@
     from: 'off'
     to: 'on'
   action:
-    - service: notify.slack
-      data_template:
-        message: ""
-        title: ""
-        data:
-          blocks:
-            - type: section
-              text:
-                type: mrkdwn
-                text: 'Water leakage detected! :potable_water:' 
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Warning"
+        message: "Water leakage detected! :potable_water:"
