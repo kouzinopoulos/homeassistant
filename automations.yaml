@@ -354,4 +354,4 @@
       title: "Home Alert"
       message: "Motion Detected"
       data:
-        file_url: https://192.168.1.187/local/snap.jpg
+        image: "/local/snap.jpg"
