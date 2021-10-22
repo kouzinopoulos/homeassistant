@@ -20,15 +20,15 @@
 
 #Send a notification when the alarm is triggered
 - alias: 'Send notification when alarm triggered'
-    trigger:
-      - platform: state
-        entity_id: alarm_control_panel.alarm_system
-        to: "triggered"
-    action:
-      - service: notify.mobile_app_oneplus_a6003
-        data:
-          title: "Alarm system"
-          message: "ALARM! The alarm has been triggered"
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "triggered"
+  action:
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm system"
+        message: "ALARM! The alarm has been triggered"
 
 #Send a Notification when the Alarm is Armed (Away/Home), Disarmed and in Pending Status
 - alias: 'Send notification when alarm is Disarmed'
