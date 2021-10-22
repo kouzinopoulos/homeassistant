@@ -1,4 +1,82 @@
 # Security alarm automations
+#Using sensors to trigger the alarm
+- alias: 'Trigger alarm while armed away'
+  trigger:
+    - platform: state
+      entity_id: group.motion_sensor
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: group.door_window_sensor
+      to: "open"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.alarm_system
+      state: armed_away
+  action:
+    service: alarm_control_panel.alarm_trigger
+    target:
+      entity_id: alarm_control_panel.alarm_system
+
+#Send a notification when the alarm is triggered
+- alias: 'Send notification when alarm triggered'
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.alarm_system
+        to: "triggered"
+    action:
+      - service: notify.mobile_app_oneplus_a6003
+        data:
+          title: "Alarm system"
+          message: "ALARM! The alarm has been triggered"
+
+#Send a Notification when the Alarm is Armed (Away/Home), Disarmed and in Pending Status
+- alias: 'Send notification when alarm is Disarmed'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "disarmed"
+  action:
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm system"
+        message: "ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}"
+
+- alias: 'Send notification when alarm is in pending status'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "pending"
+  action:
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm system"
+        message: "ALARM! The alarm is in pending status at {{ states('sensor.date_time') }}"
+
+- alias: 'Send notification when alarm is Armed in Away mode'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "armed_away"
+  action:
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm system"
+        message: "ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}"
+
+- alias: 'Send notification when alarm is Armed in Home mode'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "armed_home"
+  action:
+    - service: notify.mobile_app_oneplus_a6003
+      data:
+        title: "Alarm system"
+        # Using multi-line notation allows for easier quoting
+        message: >
+          ALARM! The alarm is armed in Home mode {{ states('sensor.date_time') }}
+
 # 1. When alarm is armed and motion is detected, start alarm on the gateway
 - alias: Siren when motion detected
   initial_state: 'off'
@@ -120,25 +198,6 @@
     to: 'Netflix'
   action:
     - service: light.turn_off
-
-- alias: Turn off living room/kitchen lights when no motion detected for 15 mins
-  initial_state: 'off'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001b179d9
-    to: 'off'
-    for:
-      minutes: 15
-  action:
-    - service: homeassistant.turn_off
-      data:
-        entity_id:
-          - light.living_room_lamp
-          - light.kitchen_lamp
-          - light.diner_lamp1
-          - light.diner_lamp2
-          - light.tv_lamp1
-          - light.tv_lamp2
 
 - alias: Turn on study lights when motion detected in study
   initial_state: 'off'

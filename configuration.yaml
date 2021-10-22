@@ -102,12 +102,6 @@ weather:
     mode: daily
     api_key: !secret darksky_key
 
-input_boolean:
-  arm_alarm:
-    name: Arm alarm
-    initial: off
-    icon: mdi:security
-
 mobile_app:
 
 spotify:
@@ -175,6 +169,20 @@ device_tracker:
     username: !secret tado_username
     password: !secret tado_password
     home_id: !secret tado_home_id
+
+# Example configuration.yaml entry
+alarm_control_panel:
+  - platform: manual
+    name: Alarm system
+    code: "1234"
+    arming_time: 30
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
 
 #tado:
 #  username: !secret tado_username

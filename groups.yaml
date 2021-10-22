@@ -1,17 +1,3 @@
-default_view:
-  icon: mdi:home-assistant
-  entities:
-    - group.Status
-    - group.Configuration
-    - group.Motion
-    - history_graph.heating_graph
-    - group.all_automations
-    - group.all_lights
-    - group.mediaplayer
-    - group.all_switches
-    - group.all_devices
-    - climate.heating
-
 All_lights:
   name: 'All lights'
   entities:
@@ -38,6 +24,10 @@ Motion_sensor:
   entities:
     - binary_sensor.motion_sensor_158d0001b179d9
     - binary_sensor.motion_sensor_158d000313db82
+
+Door_window_sensor:
+  entities:
+    - binary_sensor.door_window_sensor_158d0001a9805b
 
 Media_player:
   name: 'Media Player'

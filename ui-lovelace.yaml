@@ -132,6 +132,9 @@ views:
         card:
           type: glance
           title: Activated appliances
+      - type: alarm-panel
+        name: Alarm panel
+        entity: alarm_control_panel.alarm_system
   - icon: mdi:weather-partly-cloudy
     title: Weather
     cards:
