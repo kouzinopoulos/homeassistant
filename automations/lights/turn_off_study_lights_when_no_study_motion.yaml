@@ -1,0 +1,12 @@
+alias: Turn off study lights when no motion detected in study for 30 minutes
+trigger:
+  platform: state
+  entity_id: binary_sensor.motion_sensor_158d000313db82
+  to: 'off'
+  for:
+    minutes: 30
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - light.study_lamp

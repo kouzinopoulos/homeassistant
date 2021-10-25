@@ -1,0 +1,9 @@
+alias: Notify on startup
+trigger:
+  - event: start
+    platform: homeassistant
+action:
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Notification"
+      message: ":star: Home Assistant is starting! :star:"

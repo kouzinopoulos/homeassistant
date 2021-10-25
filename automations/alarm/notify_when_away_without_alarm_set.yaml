@@ -1,0 +1,16 @@
+# Notify when oneplus is away and alarm is not armed
+alias: Alert when any motion detected while away
+trigger:
+  platform: state
+  entity_id: sensor.heating_tado_mode_2
+  from: 'HOME'
+  to: 'AWAY'
+condition:
+  - condition: state
+    entity_id: alarm_control_panel.alarm_system
+    state: disarmed
+action:
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Alarm system"
+      message: ":police_car: Warning! You left the house without arming the alarm!"

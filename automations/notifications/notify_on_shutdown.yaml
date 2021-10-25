@@ -1,0 +1,9 @@
+alias: Notify on shutdown
+trigger:
+  - event: shutdown
+    platform: homeassistant
+action:
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Notification"
+      message: "Home Assistant is shutting down! :pensive: :pensive:"

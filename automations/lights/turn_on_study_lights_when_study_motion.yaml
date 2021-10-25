@@ -1,0 +1,11 @@
+alias: Turn on study lights when motion detected in study
+initial_state: 'off'
+trigger:
+  platform: state
+  entity_id: binary_sensor.motion_sensor_158d000313db82
+  to: 'on'
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - light.study_lamp

@@ -1,0 +1,14 @@
+alias: Turn on lamps if presence changed to home and sun is down
+trigger:
+  platform: state
+  entity_id: sensor.heating_tado_mode_2
+  from: 'AWAY'
+  to: 'HOME'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+action:
+- service: script.turn_on
+  data:
+    entity_id: script.essential_lights_on

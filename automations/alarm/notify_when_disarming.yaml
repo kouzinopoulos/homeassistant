@@ -1,0 +1,16 @@
+# When disarming the alarm, play a sound from the gateway
+alias: 'Send notification and play audio cue when alarm is disarmed'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.alarm_system
+    to: "disarmed"
+action:
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Alarm system"
+      message: "ALARM! The alarm is disarmed at {{ states('sensor.date_time') }}"
+  - service: xiaomi_aqara.play_ringtone
+    data:
+      gw_mac: !secret xiaomi_gw_mac
+      ringtone_id: 4
+      ringtone_vol: 10

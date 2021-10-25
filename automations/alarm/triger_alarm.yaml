@@ -1,0 +1,18 @@
+# Using sensors to trigger the alarm
+alias: 'Trigger alarm while armed away'
+trigger:
+  - platform: state
+    entity_id: group.motion_sensor
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: group.door_window_sensor
+    to: "open"
+condition:
+  - condition: state
+    entity_id: alarm_control_panel.alarm_system
+    state: armed_away
+action:
+  service: alarm_control_panel.alarm_trigger
+  target:
+    entity_id: alarm_control_panel.alarm_system

@@ -1,0 +1,11 @@
+alias: Toggle essential lights
+trigger:
+  platform: event
+  event_type: xiaomi_aqara.click
+  event_data:
+    entity_id: binary_sensor.switch_158d0001aaad1c
+    click_type: single
+action:
+- service: script.turn_on
+  data:
+    entity_id: script.essential_lights_toggle

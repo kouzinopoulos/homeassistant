@@ -1,0 +1,11 @@
+alias: Warning if water is detected
+trigger:
+  platform: state
+  entity_id: binary_sensor.water_leak_sensor_158d0002773fa1
+  from: 'off'
+  to: 'on'
+action:
+  - service: notify.mobile_app_oneplus_a6003
+    data:
+      title: "Warning"
+      message: "Water leakage detected! :potable_water:"
