@@ -1,5 +1,5 @@
-# Security alarm automations
-#Using sensors to trigger the alarm
+# 1. Security alarm automations
+# Using sensors to trigger the alarm
 - alias: 'Trigger alarm while armed away'
   trigger:
     - platform: state
@@ -18,20 +18,40 @@
     target:
       entity_id: alarm_control_panel.alarm_system
 
-#Send a notification when the alarm is triggered
+# Send a notification with a camera image attachment when the alarm is triggered
 - alias: 'Send notification when alarm triggered'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm_system
       to: "triggered"
   action:
+    - service: downloader.download_file
+      data_template:
+        url: "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=foscam&pwd=48241200ab"
+        filename: "snap.jpg"
+        overwrite: true
     - service: notify.mobile_app_oneplus_a6003
       data:
         title: "Alarm system"
         message: "ALARM! The alarm has been triggered"
+        data:
+          image: "/local/snap.jpg"
 
-#Send a Notification when the Alarm is Armed (Away/Home), Disarmed and in Pending Status
-- alias: 'Send notification when alarm is Disarmed'
+# Send a notification when the alarm is armed (Away/Home), disarmed and in pending Status
+# When arming or disarming the alarm, play a sound from the gateway
+- alias: 'Play audio cue when arming the alarm'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm_system
+      to: "arming"
+  action:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_gw_mac
+        ringtone_id: 8
+        ringtone_vol: 10
+
+- alias: 'Send notification and play audio cue when alarm is disarmed'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm_system
@@ -40,7 +60,12 @@
     - service: notify.mobile_app_oneplus_a6003
       data:
         title: "Alarm system"
-        message: "ALARM! The alarm is Disarmed at {{ states('sensor.date_time') }}"
+        message: "ALARM! The alarm is disarmed at {{ states('sensor.date_time') }}"
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_gw_mac
+        ringtone_id: 4
+        ringtone_vol: 10
 
 - alias: 'Send notification when alarm is in pending status'
   trigger:
@@ -53,7 +78,7 @@
         title: "Alarm system"
         message: "ALARM! The alarm is in pending status at {{ states('sensor.date_time') }}"
 
-- alias: 'Send notification when alarm is Armed in Away mode'
+- alias: 'Send notification when alarm is armed in away mode'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm_system
@@ -62,9 +87,9 @@
     - service: notify.mobile_app_oneplus_a6003
       data:
         title: "Alarm system"
-        message: "ALARM! The alarm is armed in Away mode {{ states('sensor.date_time') }}"
+        message: "ALARM! The alarm is armed in away mode {{ states('sensor.date_time') }}"
 
-- alias: 'Send notification when alarm is Armed in Home mode'
+- alias: 'Send notification when alarm is armed in home mode'
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm_system
@@ -75,70 +100,7 @@
         title: "Alarm system"
         # Using multi-line notation allows for easier quoting
         message: >
-          ALARM! The alarm is armed in Home mode {{ states('sensor.date_time') }}
-
-# 1. When alarm is armed and motion is detected, start alarm on the gateway
-- alias: Siren when motion detected
-  initial_state: 'off'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001b179d9
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: state
-    entity_id: input_boolean.arm_alarm
-    state: 'on'
-  action:
-    - service: light.turn_on
-      entity_id: light.gateway_light_286c07f1c2cd
-      data:
-        brightness: 255
-        color_name: red
-    - service: xiaomi_aqara.play_ringtone
-      data:
-        gw_mac: !secret xiaomi_gw_mac
-        ringtone_id: 1
-        ringtone_vol: 10
-    - service: automation.turn_on
-      data:
-        entity_id: automation.MOTION_OFF
-
-# 1b. When arming the alarm, play a sound from the gateway and send a notification
-- alias: Alarm arming visual/textual notification
-  trigger:
-    platform: state
-    entity_id: input_boolean.arm_alarm
-    from: 'off'
-    to: 'on'
-  action:
-    - service: xiaomi_aqara.play_ringtone
-      data:
-        gw_mac: !secret xiaomi_gw_mac
-        ringtone_id: 8
-        ringtone_vol: 10
-    - service: notify.mobile_app_oneplus_a6003
-      data:
-        title: "Alarm"
-        message: "Alarm armed"
-
-# 1c. When disarming the alarm, play a sound from the gateway and send a notification
-- alias: Alarm disarming visual/textual notification
-  trigger:
-    platform: state
-    entity_id: input_boolean.arm_alarm
-    from: 'on'
-    to: 'off'
-  action:
-    - service: xiaomi_aqara.play_ringtone
-      data:
-        gw_mac: !secret xiaomi_gw_mac
-        ringtone_id: 4
-        ringtone_vol: 10
-    - service: notify.mobile_app_oneplus_a6003
-      data:
-        title: "Alarm"
-        message: "Alarm disarmed"
+          ALARM! The alarm is armed in home mode {{ states('sensor.date_time') }}
 
 # 2. When oneplus is away and motion is detected, fire an alarm
 - alias: Alert when any motion detected while away
@@ -336,22 +298,3 @@
       data:
         title: "Warning"
         message: "Water leakage detected! :potable_water:"
-
-- id: lounge_snapshot
-  alias: Lounge snapshot
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001b179d9
-    to: 'on'
-  action:
-  - service: downloader.download_file
-    data_template:
-      url: "http://192.168.1.186:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=foscam&pwd=48241200ab"
-      filename: "snap.jpg"
-      overwrite: true
-  - service: notify.mobile_app_oneplus_a6003
-    data:
-      title: "Home Alert"
-      message: "Motion Detected"
-      data:
-        image: "/local/snap.jpg"
