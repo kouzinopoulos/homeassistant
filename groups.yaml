@@ -34,7 +34,7 @@ Media_player:
   entities:
     - media_player.tv
     - media_player.spotify_charis
-    - media_player.denon_avr_x2400h
+    - media_player.denon_avr_x2400h_2
 
 Climate:
   icon: mdi:thermometer
