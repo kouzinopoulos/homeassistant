@@ -16,6 +16,9 @@ action:
       message: "ALARM! The alarm has been triggered"
       data:
         image: "/local/snap.jpg"
+        sticky: "true"
+        ttl: 0
+        priority: high
 action:
   - service: xiaomi_aqara.play_ringtone
     data:
