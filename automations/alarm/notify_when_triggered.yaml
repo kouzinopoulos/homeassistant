@@ -1,5 +1,5 @@
-# Send a notification with a camera image attachment when the alarm is triggered
-alias: 'Send notification when alarm triggered'
+# When the alarm is triggered, send a notification with a camera image attachment and play audio
+alias: 'Alarm is triggered'
 trigger:
   - platform: state
     entity_id: alarm_control_panel.alarm_system
@@ -16,3 +16,9 @@ action:
       message: "ALARM! The alarm has been triggered"
       data:
         image: "/local/snap.jpg"
+action:
+  - service: xiaomi_aqara.play_ringtone
+    data:
+      gw_mac: !secret xiaomi_gw_mac
+      ringtone_id: 7
+      ringtone_vol: 50

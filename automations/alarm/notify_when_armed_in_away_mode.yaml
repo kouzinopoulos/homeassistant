@@ -1,4 +1,5 @@
-alias: 'Send notification when alarm is armed in away mode'
+# When the alarm is armed in away mode, send notification
+alias: 'Alarm is armed in away mode'
 trigger:
   - platform: state
     entity_id: alarm_control_panel.alarm_system

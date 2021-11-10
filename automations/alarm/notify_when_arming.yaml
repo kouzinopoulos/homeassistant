@@ -1,5 +1,5 @@
 # When arming the alarm, play a sound from the gateway
-alias: 'Play audio cue when arming the alarm'
+alias: 'Alarm is arming'
 trigger:
   - platform: state
     entity_id: alarm_control_panel.alarm_system
@@ -8,5 +8,5 @@ action:
   - service: xiaomi_aqara.play_ringtone
     data:
       gw_mac: !secret xiaomi_gw_mac
-      ringtone_id: 8
-      ringtone_vol: 10
+      ringtone_id: 3
+      ringtone_vol: 50

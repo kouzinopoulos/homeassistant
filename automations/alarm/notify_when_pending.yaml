@@ -1,4 +1,5 @@
-alias: 'Send notification when alarm is in pending status'
+# When the alarm is pending, send notification
+alias: 'Alarm is pending'
 trigger:
   - platform: state
     entity_id: alarm_control_panel.alarm_system

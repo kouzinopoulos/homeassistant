@@ -1,5 +1,5 @@
-# Notify when oneplus is away and alarm is not armed
-alias: Alert when any motion detected while away
+# When oneplus is away and alarm is not armed, send notification
+alias: 'Alarm is not armed while away'
 trigger:
   platform: state
   entity_id: sensor.heating_tado_mode_2
