@@ -117,7 +117,7 @@ views:
           - light.floor_lamp
           - switch.plug_158d0001dcab9e
           - media_player.tv
-          - media_player.denon_avr_x2400h
+          - media_player.denon_avr_x2400h_2
           - media_player.spotify_charis
           - sensor.heating_power_2
         state_filter:
