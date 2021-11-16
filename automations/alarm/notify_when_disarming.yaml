@@ -13,4 +13,4 @@ action:
     data:
       gw_mac: !secret xiaomi_gw_mac
       ringtone_id: 4
-      ringtone_vol: 50
+      ringtone_vol: 10

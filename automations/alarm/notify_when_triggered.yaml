@@ -19,9 +19,8 @@ action:
         sticky: "true"
         ttl: 0
         priority: high
-action:
   - service: xiaomi_aqara.play_ringtone
     data:
       gw_mac: !secret xiaomi_gw_mac
-      ringtone_id: 8
+      ringtone_id: 7
       ringtone_vol: 100
