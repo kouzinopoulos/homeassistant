@@ -92,17 +92,8 @@ views:
       - type: media-control
         entity: media_player.spotify_charis
       - type: entities
-        title: Security camera
-        entities:
-          - camera.foscam_camera
-      - type: entities
         entities:
           - vacuum.robot_vacuum
-      - type: picture-glance
-        title: Home camera
-        entities:
-          - binary_sensor.switch_158d0001aaad1c
-        camera_image: camera.foscam_camera
       - type: entity-filter
         id: applianceson
         entities:
@@ -131,6 +122,15 @@ views:
       - type: alarm-panel
         name: Alarm panel
         entity: alarm_control_panel.alarm_system
+      - type: entities
+        title: Security camera
+        entities:
+          - camera.foscam_camera
+      - type: picture-glance
+        title: Home camera
+        entities:
+          - binary_sensor.switch_158d0001aaad1c
+        camera_image: camera.foscam_camera
   - icon: mdi:weather-partly-cloudy
     title: Weather
     cards:
