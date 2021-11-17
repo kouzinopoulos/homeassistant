@@ -2,11 +2,11 @@
 alias: 'Trigger alarm while armed away'
 trigger:
   - platform: state
-    entity_id: group.motion_sensor
+    entity_id: group.motion_sensors
     from: 'off'
     to: 'on'
   - platform: state
-    entity_id: group.door_window_sensor
+    entity_id: group.door_window_sensors
     to: "open"
 condition:
   - condition: state

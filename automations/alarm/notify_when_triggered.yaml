@@ -1,4 +1,4 @@
-# When the alarm is triggered, send a notification with a camera image attachment and play audio
+# When the alarm is triggered, send notification with a camera image attachment and play audio
 alias: 'Alarm is triggered'
 trigger:
   - platform: state

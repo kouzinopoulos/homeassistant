@@ -20,12 +20,12 @@ Configuration:
   entities:
     - input_boolean.arm_alarm
 
-Motion_sensor:
+Motion_sensors:
   entities:
     - binary_sensor.motion_sensor_158d0001b179d9
     - binary_sensor.motion_sensor_158d000313db82
 
-Door_window_sensor:
+Door_window_sensors:
   entities:
     - binary_sensor.door_window_sensor_158d0001a9805b
 

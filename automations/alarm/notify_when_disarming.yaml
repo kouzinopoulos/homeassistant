@@ -1,4 +1,4 @@
-# When the alarm is disarmed, play a sound from the gateway
+# When the alarm is disarmed, send notification and play a sound from the gateway
 alias: 'Alarm is disarmed'
 trigger:
   - platform: state

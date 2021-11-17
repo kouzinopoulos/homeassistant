@@ -8,6 +8,4 @@ action:
   - service: notify.mobile_app_oneplus_a6003
     data:
       title: "Alarm system"
-      # Using multi-line notation allows for easier quoting
-      message: >
-        ALARM! The alarm is armed in home mode {{ states('sensor.date_time') }}
+      message: "ALARM! The alarm is armed in home mode {{ states('sensor.date_time') }}"

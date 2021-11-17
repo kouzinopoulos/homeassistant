@@ -15,12 +15,8 @@ views:
           - sensor.tv_on_this_week
       - type: entities
         entities:
-          - entity: binary_sensor.motion_sensor_158d0001b179d9
-            secondary_info: last-changed
-          - entity: binary_sensor.motion_sensor_158d000313db82
-            secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d0001a9805b
-            secondary_info: last-changed
+          - group.motion_sensors
+          - group.door_window_sensors
       - type: button
         name: Lights out
         icon: mdi:power
