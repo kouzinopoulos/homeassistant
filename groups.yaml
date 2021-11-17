@@ -1,5 +1,4 @@
-All_lights:
-  name: 'All lights'
+all_lights:
   entities:
     - light.kitchen_lamp
     - light.living_room_lamp
@@ -11,69 +10,21 @@ All_lights:
     - light.tv_lamp2
     - light.floor_lamp
 
-All_switches:
-  name: 'All switches'
+all_switches:
   entities:
     - switch.plug_158d0001dcab9e
 
-Configuration:
-  entities:
-    - input_boolean.arm_alarm
-
-Motion_sensors:
+motion_sensors:
   entities:
     - binary_sensor.motion_sensor_158d0001b179d9
     - binary_sensor.motion_sensor_158d000313db82
 
-Door_window_sensors:
+door_window_sensors:
   entities:
     - binary_sensor.door_window_sensor_158d0001a9805b
 
-Media_player:
-  name: 'Media Player'
+media_player:
   entities:
     - media_player.tv
     - media_player.spotify_charis
     - media_player.denon_avr_x2400h_2
-
-Climate:
-  icon: mdi:thermometer
-  entities:
-    - group.Weather
-    - group.Today
-    - group.Indoors
-
-Status:
-  entities:
-    - sensor.home_this_week
-    - sensor.away_this_week
-    - sensor.heating_on_this_week
-    - sensor.heating_off_this_week
-    - sensor.tv_on_this_week
-
-Weather:
-  entities:
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_temperature_low
-    - sensor.dark_sky_temperature_high
-    - sensor.dark_sky_precip_probability
-    - sensor.dark_sky_cloud_cover
-    - sensor.dark_sky_wind_speed
-    - sensor.friendly_wind_direction
-    - sensor.dark_sky_daily_summary
-    - sensor.dark_sky_temperature_1
-    - sensor.dark_sky_temperature_low_1
-    - sensor.dark_sky_temperature_high_1
-    - sensor.dark_sky_precip_probability_1
-    - sensor.dark_sky_cloud_cover_1
-    - sensor.friendly_wind_direction_forecast
-
-Today:
-  entities:
-    - sun.sun
-    - sensor.solar_angle
-    - sensor.sunrise_time
-    - sensor.sunset_time
-    - sensor.moon
-    - sensor.friendly_date
-    - sensor.dark_sky_hourly_summary

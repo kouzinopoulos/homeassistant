@@ -1,14 +1,3 @@
-- platform: moon
-- platform: template
-  sensors:
-    friendly_date:
-      # Thursday June 10th, 2017
-      friendly_name: "Today's Date"
-      value_template: "{{ now().strftime('%A %B %e, %Y') }}"
-    friendly_date_day:
-      # Thu
-      friendly_name: "Today's Day"
-      value_template: "{{ now().strftime('%a') }}"
 - platform: darksky
   api_key: !secret darksky_key
   monitored_conditions:
@@ -32,6 +21,7 @@
     - 4
   scan_interval:
     minutes: 5
+# Used for the ui statistics
 - platform: history_stats
   name: Home this week
   entity_id: sensor.heating_tado_mode_2
@@ -67,40 +57,9 @@
   type: ratio
   start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
   end: '{{ now() }}'
-
-- platform: history_stats
-  name: Quarantine meter charis
-  entity_id: person.charis
-  state: "home"
-  type: ratio
-  duration:
-    days: 14
-  end: "{{ now() }}"
-
-- platform: history_stats
-  name: Quarantine meter charis times left
-  entity_id: person.charis
-  state: "home"
-  type: count
-  duration:
-    days: 14
-  end: "{{ now() }}"
-
-- platform: template
-  sensors: 
-    hours_outside_per_day_charis:
-      value_template: >
-        {% set value = state_attr("sensor.quarantine_meter_charis", "value") %}
-        {% if value != None %}
-        {% set d, h, m = value.split() %}
-        {% set d, h, m = d[:-1] | int, h[:-1] | int, m[:-1] | int %}
-        {% set hours_outside = ((14 - d) * 86400 - h * 3600 - m * 60) / 3600 %}
-        {{ (hours_outside / 14) | round(1) }}
-        {% endif %}
-
+# Used for the alarm system notifications
 - platform: time_date
   display_options:
     - 'time'
     - 'date'
     - 'date_time'
-
