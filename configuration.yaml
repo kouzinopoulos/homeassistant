@@ -212,14 +212,6 @@ downloader:
 lovelace:
   mode: yaml
 
-#resources:
-#  - url: /local/my-custom-card.js
-#    type: js
-#  - url: /local/my-webfont.css
-#    type: css
-#  - url: /local/xiaomi-vacuum-card.js?v=4.1.0
-#    type: js
-
 system_health:
 
 automation: !include_dir_list automations
