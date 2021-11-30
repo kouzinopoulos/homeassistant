@@ -11,6 +11,8 @@ views:
   - icon: mdi:home-assistant
     title: Home
     cards:
+      - type: weather-forecast
+        entity: weather.dark_sky
       - type: entities
         title: Home status
         entities:
@@ -135,40 +137,131 @@ views:
   - icon: mdi:weather-partly-cloudy
     title: Weather
     cards:
-      - type: custom:mini-graph-card
-        name: Temperature
-        icon: mdi:home-thermometer
-        hours_to_show: 12
-        entities:
-          - entity: sensor.heating_temperature_2
-            name: Living room
-          - entity: sensor.temperature_158d0002c91220
-            name: Bedroom
-      - type: custom:mini-graph-card
-        name: Humidity
-        icon: mdi:water-percent
-        hours_to_show: 12
-        entities:
-          - entity: sensor.heating_humidity_2
-            name: Living room
-          - entity: sensor.humidity_158d0002c91220
-            name: Bedroom
-      - type: sensor
-        name: Environmental temperature
-        entity: sensor.dark_sky_temperature
-        graph: line
-        detail: 2
-        hours_to_show: 6
-      - type: sensor
-        name: Precipitation probability
-        entity: sensor.dark_sky_precip_probability
-        graph: line
-        detail: 2
-        hours_to_show: 6
-      - type: weather-forecast
-        entity: weather.dark_sky
+      - type: horizontal-stack
+        title: "Living room"
+        cards:
+          - type: custom:mini-graph-card
+            name: Temperature
+            icon: mdi:home-thermometer
+            hours_to_show: 6
+            points_per_hour: 10
+            entities:
+              - entity: sensor.heating_temperature_2
+          - type: custom:mini-graph-card
+            name: Humidity
+            icon: mdi:water-percent
+            hours_to_show: 6
+            points_per_hour: 10
+            line_color: blue
+            entities:
+              - entity: sensor.heating_humidity_2
+      - type: horizontal-stack
+        title: "BME280"
+        cards:
+          - type: custom:mini-graph-card
+            name: Temperature
+            icon: mdi:home-thermometer
+            hours_to_show: 6
+            points_per_hour: 10
+            entities:
+              - entity: sensor.bme280_temperature
+          - type: custom:mini-graph-card
+            name: Humidity
+            icon: mdi:water-percent
+            hours_to_show: 6
+            points_per_hour: 10
+            line_color: blue
+            entities:
+              - entity: sensor.bme280_humidity
+          - type: custom:mini-graph-card
+            name: Pressure
+            icon: mdi:gauge
+            hours_to_show: 6
+            points_per_hour: 10
+            line_color: green
+            entities:
+              - entity: sensor.bme280_pressure
+      - type: horizontal-stack
+        title: "Environment"
+        cards:
+          - type: custom:mini-graph-card
+            name: Temperature
+            icon: mdi:home-thermometer
+            hours_to_show: 6
+            points_per_hour: 10
+            entities:
+              - entity: sensor.dark_sky_temperature
+          - type: custom:mini-graph-card
+            name: Precipitation probability
+            icon: mdi:weather-pouring
+            hours_to_show: 6
+            points_per_hour: 10
+            line_color: blue
+            entities:
+              - entity: sensor.dark_sky_precip_probability
       - type: thermostat
         entity: climate.heating
+      - type: vertical-stack
+        title: "Sensing"
+        cards:
+        - type: horizontal-stack
+          title: "Lux"
+          cards:
+            - type: custom:mini-graph-card
+              name: BH1750 Lux
+              icon: mdi:weather-sunny
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.bh1750_lux
+            - type: custom:mini-graph-card
+              name: TSL2591 Lux
+              icon: mdi:weather-sunny
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.tsl2591_lux
+        - type: horizontal-stack
+          title: "Light"
+          cards:
+            - type: custom:mini-graph-card
+              name: TSL2591 Full spectrum light
+              icon: mdi:lightbulb-variant-outline
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.tsl2591_full_spectrum_light
+            - type: custom:mini-graph-card
+              name: TSL2591 Infrared light
+              icon: mdi:lightbulb-variant-outline
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.tsl2591_infrared_light
+            - type: custom:mini-graph-card
+              name: TSL2591 Visible light
+              icon: mdi:lightbulb-variant-outline
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.tsl2591_visible_light
+        - type: horizontal-stack
+          title: "Air quality"
+          cards:
+            - type: custom:mini-graph-card
+              name: CCS811 Total VOC
+              icon: mdi:molecule-co2
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.ccs811_total_volatile_organic_compound
+            - type: custom:mini-graph-card
+              name: CCS811 CO2
+              icon: mdi:molecule-co2
+              hours_to_show: 6
+              points_per_hour: 10
+              entities:
+                - entity: sensor.ccs811_eco2_value
   - title: Presence
     icon: mdi:crosshairs-gps
     cards:
