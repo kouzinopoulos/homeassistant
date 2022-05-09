@@ -1,9 +1,3 @@
-resources:
-  - url: /local/mini-graph-card-bundle.js?v=0.10.0
-    type: module
-  - url: /local/xiaomi-vacuum-card.js?v=4.4.0
-    type: module
-
 title: My Home!
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 background: center / cover no-repeat url("/background.png") fixed
